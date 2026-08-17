@@ -45,16 +45,20 @@
 
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 
 body {
 
     background:
-        radial-gradient(circle at top right,
+        radial-gradient(
+            circle at top right,
             rgba(180, 0, 0, 0.08),
-            transparent 30%),
+            transparent 30%
+        ),
         var(--bg);
 
     color: var(--text);
@@ -70,14 +74,37 @@ body {
 }
 
 
+/* Prevent scroll while mobile menu is open */
+
+body.menu-open {
+
+    overflow: hidden;
+
+}
+
+
 img {
+
     max-width: 100%;
+
 }
 
 
 a {
+
     color: inherit;
+
     text-decoration: none;
+
+}
+
+
+button,
+input,
+textarea {
+
+    font-family: inherit;
+
 }
 
 
@@ -100,18 +127,26 @@ a {
 ====================================================== */
 
 ::-webkit-scrollbar {
+
     width: 7px;
+
 }
 
+
 ::-webkit-scrollbar-track {
+
     background: #090909;
+
 }
+
 
 ::-webkit-scrollbar-thumb {
 
     background:
-        linear-gradient(#ff3030,
-            #a00000);
+        linear-gradient(
+            #ff3030,
+            #a00000
+        );
 
     border-radius: 20px;
 
@@ -127,10 +162,12 @@ a {
     min-height: 100vh;
 
     background:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             rgba(0, 0, 0, 0.95),
             rgba(0, 0, 0, 0.7),
-            rgba(0, 0, 0, 0.9)),
+            rgba(0, 0, 0, 0.9)
+        ),
         url("./assets/header\ 1.jpeg");
 
     background-size: cover;
@@ -155,8 +192,10 @@ a {
     height: 180px;
 
     background:
-        linear-gradient(transparent,
-            var(--bg));
+        linear-gradient(
+            transparent,
+            var(--bg)
+        );
 
     pointer-events: none;
 
@@ -180,7 +219,16 @@ nav {
 
     position: relative;
 
-    z-index: 10;
+    z-index: 1000;
+
+}
+
+
+.logo-link {
+
+    display: inline-flex;
+
+    align-items: center;
 
 }
 
@@ -244,9 +292,11 @@ nav ul li a::after {
     height: 2px;
 
     background:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             var(--red),
-            var(--red-light));
+            var(--red-light)
+        );
 
     transform:
         scaleX(0);
@@ -295,14 +345,45 @@ nav ul li a.active-nav::after {
 }
 
 
-.menu-open,
-.menu-close {
+/* =====================================================
+   MOBILE MENU BUTTON
+====================================================== */
+
+.menu-open {
 
     display: none;
 
     font-size: 25px;
 
     cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.menu-open:hover {
+
+    color:
+        #ff4040;
+
+}
+
+
+.menu-open:focus-visible {
+
+    outline:
+        2px solid #ff3030;
+
+    outline-offset:
+        5px;
+
+    border-radius:
+        4px;
 
 }
 
@@ -449,13 +530,21 @@ nav ul li a.active-nav::after {
 @keyframes heroDescriptionReveal {
 
     from {
+
         opacity: 0;
-        transform: translateY(18px);
+
+        transform:
+            translateY(18px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
@@ -463,11 +552,29 @@ nav ul li a.active-nav::after {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .hero-description,
-    .hero-description strong {
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+    .hero-description {
 
         animation: none;
+
         opacity: 1;
+
         transform: none;
 
     }
@@ -575,9 +682,11 @@ nav ul li a.active-nav::after {
 .primary-btn {
 
     background:
-        linear-gradient(135deg,
+        linear-gradient(
+            135deg,
             #f00000,
-            #a00000);
+            #a00000
+        );
 
     border:
         1px solid #ff3030;
@@ -683,9 +792,11 @@ nav ul li a.active-nav::after {
         12px auto 0;
 
     background:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             var(--red),
-            var(--red-light));
+            var(--red-light)
+        );
 
     border-radius: 10px;
 
@@ -699,9 +810,11 @@ nav ul li a.active-nav::after {
 .about {
 
     background:
-        linear-gradient(180deg,
+        linear-gradient(
+            180deg,
             var(--bg),
-            #0c0c0c);
+            #0c0c0c
+        );
 
 }
 
@@ -748,9 +861,11 @@ nav ul li a.active-nav::after {
     inset: -30px;
 
     background:
-        radial-gradient(circle,
+        radial-gradient(
+            circle,
             rgba(220, 0, 0, 0.12),
-            transparent 65%);
+            transparent 65%
+        );
 
     z-index: 0;
 
@@ -1032,9 +1147,11 @@ nav ul li a.active-nav::after {
     border-radius: 28px;
 
     background:
-        linear-gradient(145deg,
+        linear-gradient(
+            145deg,
             rgba(255, 255, 255, 0.045),
-            rgba(255, 255, 255, 0.012));
+            rgba(255, 255, 255, 0.012)
+        );
 
     box-shadow:
         var(--shadow);
@@ -1072,9 +1189,11 @@ nav ul li a.active-nav::after {
     border-radius: 16px;
 
     background:
-        linear-gradient(135deg,
+        linear-gradient(
+            135deg,
             #ff3030,
-            #a00000);
+            #a00000
+        );
 
     font-size: 24px;
 
@@ -1380,9 +1499,11 @@ nav ul li a.active-nav::after {
     border-radius: 25px;
 
     background:
-        linear-gradient(145deg,
+        linear-gradient(
+            145deg,
             rgba(255, 255, 255, 0.04),
-            rgba(255, 255, 255, 0.015));
+            rgba(255, 255, 255, 0.015)
+        );
 
     transition:
         all 0.3s ease;
@@ -1412,11 +1533,6 @@ nav ul li a.active-nav::after {
 }
 
 
-/* =====================================================
-   PROJECT IMAGES — FIXED
-   Only image behavior changed
-====================================================== */
-
 .project-image-wrapper {
 
     position: relative;
@@ -1445,10 +1561,6 @@ nav ul li a.active-nav::after {
 
     height: 100%;
 
-    /*
-       CONTAIN keeps the complete image visible.
-       No left/right/top/bottom cropping.
-    */
     object-fit: contain;
 
     object-position: center;
@@ -1461,11 +1573,6 @@ nav ul li a.active-nav::after {
 }
 
 
-/*
-   Featured image:
-   Do NOT use scale(1.04) here because
-   it can create unnecessary edge cropping.
-*/
 .featured-project .project-image {
 
     object-fit: contain;
@@ -1477,10 +1584,6 @@ nav ul li a.active-nav::after {
 }
 
 
-/*
-   Very subtle hover zoom.
-   Keeps the image visually stable.
-*/
 .project-card:hover .project-image {
 
     transform:
@@ -1676,7 +1779,7 @@ nav ul li a.active-nav::after {
 }
 
 
-.other-project-card>img {
+.other-project-card > img {
 
     width: 100%;
 
@@ -1941,7 +2044,7 @@ nav ul li a.active-nav::after {
 }
 
 
-.contact-card>p {
+.contact-card > p {
 
     color:
         #888;
@@ -2098,13 +2201,41 @@ nav ul li a.active-nav::after {
         #fff;
 
     background:
-        linear-gradient(135deg,
+        linear-gradient(
+            135deg,
             #e00000,
-            #a00000);
+            #a00000
+        );
 
     cursor: pointer;
 
     font-size: 13px;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.contact-right button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.contact-right button:disabled {
+
+    opacity:
+        0.65;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
 
 }
 
@@ -2114,6 +2245,8 @@ nav ul li a.active-nav::after {
     margin-top: 15px;
 
     font-size: 12px;
+
+    min-height: 18px;
 
 }
 
@@ -2201,7 +2334,11 @@ nav ul li a.active-nav::after {
     height: 50px;
 
     background:
-        linear-gradient(135deg, var(--red), var(--red-light));
+        linear-gradient(
+            135deg,
+            var(--red),
+            var(--red-light)
+        );
 
     color: #ffffff;
 
@@ -2238,7 +2375,8 @@ nav ul li a.active-nav::after {
 
 .scroll-to-top:hover {
 
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
     box-shadow:
         0 15px 40px rgba(224, 0, 0, 0.6);
@@ -2248,83 +2386,93 @@ nav ul li a.active-nav::after {
 
 .scroll-to-top:active {
 
-    transform: scale(0.95);
+    transform:
+        scale(0.95);
 
 }
 
 
 /* =====================================================
-   MOBILE
+   TABLET
+   701px - 900px
 ====================================================== */
 
 @media (max-width: 900px) {
 
     .data-engineering-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
+
     }
+
 
     .about-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
+
 
     .profile-card {
-        max-width: 300px;
+
+        max-width:
+            300px;
+
     }
+
 
     .project-card {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
+
     .project-image-wrapper {
-        min-height: 250px;
+
+        min-height:
+            250px;
+
     }
+
 
     .legacy-skills-grid,
     .certification-grid,
     .contact-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
+
 
     .other-project-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
 }
 
 
 /* =====================================================
-   TABLET & MEDIUM SCREENS
+   MOBILE NAVIGATION
+   Tablet + Mobile
 ====================================================== */
 
-@media (min-width: 901px) and (max-width: 1199px) {
-
-    .container {
-        max-width: 900px;
-    }
-
-    .data-engineering-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .certification-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE NAV
-====================================================== */
-
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 
     .menu-open {
-        display: block;
+
+        display:
+            block;
+
     }
+
 
     nav ul {
 
@@ -2341,9 +2489,13 @@ nav ul li a.active-nav::after {
         padding:
             80px 25px;
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
+
+        gap: 10px;
 
         background:
             rgba(12, 12, 12, 0.98);
@@ -2357,26 +2509,35 @@ nav ul li a.active-nav::after {
         transition:
             right 0.35s ease;
 
+        overflow-y:
+            auto;
+
+        z-index:
+            1001;
+
     }
 
 
     nav ul.active {
 
-        right: 0;
+        right:
+            0;
 
     }
 
 
     nav ul li {
 
-        width: 100%;
+        width:
+            100%;
 
     }
 
 
     nav ul li a {
 
-        width: 100%;
+        width:
+            100%;
 
         padding:
             12px 5px;
@@ -2384,22 +2545,10 @@ nav ul li a.active-nav::after {
     }
 
 
-    .menu-close {
-
-        display: block;
-
-        position: absolute;
-
-        top: 25px;
-
-        right: 25px;
-
-    }
-
-
     .header-text {
 
-        padding-top: 50px;
+        padding-top:
+            50px;
 
     }
 
@@ -2438,14 +2587,16 @@ nav ul li a.active-nav::after {
 
     .other-project-card {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
 
 
-    .other-project-card>img {
+    .other-project-card > img {
 
-        height: 190px;
+        height:
+            190px;
 
     }
 
@@ -2460,21 +2611,64 @@ nav ul li a.active-nav::after {
 
     }
 
+
     .scroll-to-top {
 
-        width: 45px;
-        height: 45px;
+        width:
+            45px;
 
-        bottom: 20px;
-        right: 20px;
+        height:
+            45px;
 
-        font-size: 18px;
+        bottom:
+            20px;
+
+        right:
+            20px;
+
+        font-size:
+            18px;
 
     }
 
+
     .scroll-to-top.show {
 
-        bottom: 20px;
+        bottom:
+            20px;
+
+    }
+
+}
+
+
+/* =====================================================
+   MEDIUM DESKTOP / TABLET
+   901px - 1199px
+====================================================== */
+
+@media (min-width: 901px) and (max-width: 1199px) {
+
+    .container {
+
+        max-width:
+            900px;
+
+    }
+
+
+    .data-engineering-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .certification-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
 
     }
 
@@ -2488,104 +2682,170 @@ nav ul li a.active-nav::after {
 @media (max-width: 480px) {
 
     .container {
+
         padding:
             0 20px;
+
     }
 
 
     .section {
+
         padding:
             75px 0;
+
     }
 
 
     .header-text h1 {
-        font-size: 42px;
+
+        font-size:
+            42px;
+
     }
 
 
     .hero-description br {
-        display: none;
+
+        display:
+            none;
+
     }
 
 
     .hero-buttons {
+
         flex-direction:
             column;
+
     }
 
 
     .primary-btn,
     .secondary-btn {
+
         justify-content:
             center;
+
     }
 
 
     .skill-category-header h2 {
-        font-size: 22px;
+
+        font-size:
+            22px;
+
     }
 
 
     .legacy-skill-box {
+
         padding:
             20px;
+
     }
 
 
     .certification-card {
+
         padding:
             20px;
+
     }
 
 }
 
 
 /* =====================================================
-   EXTRA SMALL MOBILE (320px - 375px)
+   EXTRA SMALL MOBILE
+   320px - 375px
 ====================================================== */
 
 @media (max-width: 375px) {
 
     .container {
+
         padding:
             0 15px;
+
     }
+
 
     .header-text h1 {
-        font-size: 36px;
-        line-height: 1.3;
+
+        font-size:
+            36px;
+
+        line-height:
+            1.3;
+
     }
+
 
     .section-heading h1 {
-        font-size: 28px;
+
+        font-size:
+            28px;
+
     }
+
 
     .hero-description {
-        font-size: 14px;
+
+        font-size:
+            14px;
+
     }
 
+
     nav ul li a {
-        font-size: 13px;
-        padding: 8px 8px;
+
+        font-size:
+            13px;
+
+        padding:
+            8px 8px;
+
     }
+
 
     .primary-btn,
     .secondary-btn {
-        font-size: 14px;
-        padding: 10px 18px;
+
+        font-size:
+            14px;
+
+        padding:
+            10px 18px;
+
     }
+
 
     .de-skill-card {
-        padding: 15px;
+
+        padding:
+            15px;
+
     }
 
+
     .scroll-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-        bottom: 15px;
-        right: 15px;
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        font-size:
+            16px;
+
+        bottom:
+            15px;
+
+        right:
+            15px;
+
     }
 
 }
@@ -2595,29 +2855,60 @@ nav ul li a.active-nav::after {
    UNIVERSAL RESPONSIVE FIXES
 ====================================================== */
 
-/* Prevent horizontal scroll on all devices */
 * {
-    max-width: 100%;
+
+    max-width:
+        100%;
+
 }
 
-/* Ensure images never overflow */
+
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+
+    max-width:
+        100%;
+
+    height:
+        auto;
+
+    display:
+        block;
+
 }
 
-/* Responsive text overflow */
+
 p,
 span,
 a {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+
+    word-wrap:
+        break-word;
+
+    overflow-wrap:
+        break-word;
+
 }
 
-/* Fix modal/menu overflow */
+
+/* Prevent fixed menu from causing horizontal overflow */
+
 nav ul,
 .sidemenu {
-    max-width: 100vw;
-    overflow-y: auto;
+
+    max-width:
+        100vw;
+
+    overflow-y:
+        auto;
+
+}
+
+
+/* Better anchor positioning */
+
+section[id] {
+
+    scroll-margin-top:
+        20px;
+
 }
