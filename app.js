@@ -1,191 +1,343 @@
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+/* =====================================================
+   PORTFOLIO JAVASCRIPT
+   Abhishek Niraj - Data Engineer Portfolio
+====================================================== */
 
-const sidemenu = document.getElementById("sidemenu");
+
+/* =====================================================
+   TAB SWITCHING
+====================================================== */
+
+function opentab(tabName) {
+
+    const contents =
+        document.querySelectorAll(".tab-contents");
+
+    const tabs =
+        document.querySelectorAll(".tab-links");
+
+
+    contents.forEach((content) => {
+
+        content.classList.remove("active-tab");
+
+    });
+
+
+    tabs.forEach((tab) => {
+
+        tab.classList.remove("active-link");
+
+    });
+
+
+    const selectedContent =
+        document.getElementById(tabName);
+
+    if (selectedContent) {
+
+        selectedContent.classList.add("active-tab");
+
+    }
+
+
+    tabs.forEach((tab) => {
+
+        const onclickValue =
+            tab.getAttribute("onclick");
+
+        if (
+            onclickValue &&
+            onclickValue.includes(`'${tabName}'`)
+        ) {
+
+            tab.classList.add("active-link");
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+====================================================== */
+
+const sidemenu =
+    document.getElementById("sidemenu");
+
 
 function openmenu() {
 
     if (sidemenu) {
-        sidemenu.style.right = "0";
+
+        sidemenu.classList.add("active");
+
     }
 
 }
+
 
 function closemenu() {
 
     if (sidemenu) {
-        sidemenu.style.right = "-280px";
+
+        sidemenu.classList.remove("active");
+
     }
 
 }
 
 
-/* Close mobile menu after clicking a link */
+/* Close menu when navigation link is clicked */
 
-document.querySelectorAll("#sidemenu a").forEach(link => {
+document
+    .querySelectorAll("#sidemenu a")
+    .forEach((link) => {
 
-    link.addEventListener("click", () => {
-        closemenu();
+        link.addEventListener(
+            "click",
+            closemenu
+        );
+
     });
+
+
+/* =====================================================
+   RESUME
+====================================================== */
+
+const resumeButtons =
+    document.querySelectorAll(
+        "#resume-button-1, #resume-button-2"
+    );
+
+
+resumeButtons.forEach((button) => {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            /*
+             * Resume is handled directly by the
+             * download attribute in HTML.
+             */
+
+        }
+    );
 
 });
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+/* =====================================================
+   SCROLL TO TOP BUTTON
+====================================================== */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+const scrollToTopBtn =
+    document.getElementById("scrollToTopBtn");
 
-const revealObserver =
-    new IntersectionObserver(
-        (entries) => {
 
-            entries.forEach(entry => {
+if (scrollToTopBtn) {
 
-                if (entry.isIntersecting) {
+    window.addEventListener("scroll", () => {
 
-                    entry.target.classList.add("active");
+        if (window.scrollY > 300) {
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+            scrollToTopBtn.classList.add("show");
+
+        } else {
+
+            scrollToTopBtn.classList.remove("show");
+
+        }
+
+    });
+
+
+    scrollToTopBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
+
+}
+
+
+/* =====================================================
+   ACTIVE LINK HIGHLIGHTING
+====================================================== */
+
+function highlightActiveLink() {
+
+    const navLinks =
+        document.querySelectorAll(
+            "#sidemenu a[href^='#']"
+        );
+
+    const sections =
+        document.querySelectorAll("[id]");
+
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+
+        sections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.clientHeight;
+
+
+            if (
+                window.pageYOffset >=
+                sectionTop - 200
+            ) {
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach((link) => {
+
+            link.classList.remove("active-nav");
+
+
+            if (
+                link.getAttribute("href").slice(1) === current
+            ) {
+
+                link.classList.add("active-nav");
+
+            }
+
+        });
+
+    });
+
+}
+
+highlightActiveLink();
+
+
+/* =====================================================
+   TYPED HERO TITLE + DESCRIPTION
+====================================================== */
+
+/*
+ * IMPORTANT:
+ *
+ * STEP 1:
+ * Data Engineer
+ *
+ * STEP 2:
+ * Azure Databricks Specialist
+ *
+ * STEP 3:
+ * Description starts only AFTER the title sequence
+ *
+ * The description has its own slower typing speed.
+ */
+
+
+if (
+    typeof Typed !== "undefined" &&
+    document.querySelector(".auto-type")
+) {
+
+    const heroTitle =
+        new Typed(
+            ".auto-type",
+            {
+
+                strings: [
+
+                    "Data Engineer",
+
+                    "Azure Databricks Specialist"
+
+                ],
+
+                typeSpeed: 70,
+
+                backSpeed: 45,
+
+                backDelay: 2200,
+
+                startDelay: 500,
+
+                loop: true,
+
+                showCursor: true,
+
+                cursorChar: "|",
+
+                onStringTyped: function () {
+
+                    /*
+                     * Description is intentionally
+                     * handled separately below.
+                     *
+                     * This callback is kept here
+                     * so the title animation remains
+                     * independent and smooth.
+                     */
 
                 }
 
-            });
+            }
+        );
 
-        },
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION TYPING
+====================================================== */
+
+if (
+    typeof Typed !== "undefined" &&
+    document.querySelector(".hero-description-type")
+) {
+
+    new Typed(
+        ".hero-description-type",
         {
-            threshold: 0.15
-        }
-    );
 
+            strings: [
 
-revealElements.forEach(element => {
+                "Building scalable, reliable data pipelines and cloud data platforms using Databricks, Azure Data Factory, ADLS Gen2, Delta Lake, Medallion Architecture. Experienced in enterprise data migration, ETL modernization, data quality, and production-grade pipeline validation."
 
-    revealObserver.observe(element);
+            ],
 
-});
+            typeSpeed: 28,
 
+            backSpeed: 0,
 
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
+            backDelay: 5000,
 
-const sections =
-    document.querySelectorAll("section");
+            startDelay: 4200,
 
-const navLinks =
-    document.querySelectorAll("nav ul li a");
+            loop: true,
 
+            showCursor: true,
 
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop =
-            section.offsetTop - 180;
-
-        const sectionHeight =
-            section.offsetHeight;
-
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active-nav");
-
-        if (
-            link.getAttribute("href") ===
-            `#${current}`
-        ) {
-
-            link.classList.add("active-nav");
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   SMOOTH SCROLL
-========================================================= */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener("click", function (event) {
-
-        const targetId =
-            this.getAttribute("href");
-
-        if (targetId === "#") {
-            return;
-        }
-
-        const target =
-            document.querySelector(targetId);
-
-        if (target) {
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   RESUME BUTTONS
-========================================================= */
-
-const resumeURL =
-    "https://drive.google.com/file/d/1jSyB3jhLuHW2nPoS-sqFdkkmDS4q_1UY/view?usp=sharing";
-
-
-const resumeButton1 =
-    document.getElementById("resume-button-1");
-
-const resumeButton2 =
-    document.getElementById("resume-button-2");
-
-
-if (resumeButton1) {
-
-    resumeButton1.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-            window.open(
-                resumeURL,
-                "_blank",
-                "noopener,noreferrer"
-            );
+            cursorChar: "|"
 
         }
     );
@@ -193,345 +345,304 @@ if (resumeButton1) {
 }
 
 
-if (resumeButton2) {
-
-    resumeButton2.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-            window.open(
-                resumeURL,
-                "_blank",
-                "noopener,noreferrer"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
+/* =====================================================
    EMAILJS
-========================================================= */
-
-if (typeof emailjs !== "undefined") {
-
-    emailjs.init({
-        publicKey: "QFXGomMr5FbDoybBR"
-    });
-
-}
-
+====================================================== */
 
 const contactForm =
     document.getElementById("contactForm");
 
 
+const statusMessage =
+    document.getElementById("statusMessage");
+
+
+/*
+ * Initialize EmailJS
+ */
+
+if (
+    typeof emailjs !== "undefined"
+) {
+
+    emailjs.init({
+
+        publicKey:
+            "QFXGomMr5FbDoybBR"
+
+    });
+
+}
+
+
+/* =====================================================
+   SEND EMAIL
+====================================================== */
+
 if (contactForm) {
 
     contactForm.addEventListener(
         "submit",
-        sendEmail
+        function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const message =
+                document
+                    .getElementById("message")
+                    .value
+                    .trim();
+
+
+            if (
+                !name ||
+                !email ||
+                !message
+            ) {
+
+                showStatus(
+                    "Please fill in all fields.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            showStatus(
+                "Sending message...",
+                "loading"
+            );
+
+
+            const templateParams = {
+
+                from_name:
+                    name,
+
+                from_email:
+                    email,
+
+                message:
+                    message
+
+            };
+
+
+            emailjs
+                .send(
+                    "service_qtbzwds",
+                    "template_p980pca",
+                    templateParams
+                )
+
+                .then(
+                    function (response) {
+
+                        console.log(
+                            "SUCCESS!",
+                            response.status,
+                            response.text
+                        );
+
+
+                        showStatus(
+                            "Message sent successfully!",
+                            "success"
+                        );
+
+
+                        contactForm.reset();
+
+                    }
+                )
+
+                .catch(
+                    function (error) {
+
+                        console.error(
+                            "EMAILJS ERROR:",
+                            error
+                        );
+
+
+                        showStatus(
+                            "Failed to send message. Please try again.",
+                            "error"
+                        );
+
+                    }
+                );
+
+        }
     );
 
 }
 
 
-function sendEmail(event) {
+/* =====================================================
+   STATUS MESSAGE
+====================================================== */
 
-    event.preventDefault();
+function showStatus(
+    message,
+    type
+) {
 
-    const name =
-        document.getElementById("name").value.trim();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const message =
-        document.getElementById("message").value.trim();
-
-    const statusMessage =
-        document.getElementById("statusMessage");
-
-
-    if (!name || !email || !message) {
-
-        statusMessage.textContent =
-            "Please fill in all fields.";
-
-        statusMessage.style.color =
-            "#ff5252";
+    if (!statusMessage) {
 
         return;
 
     }
 
 
-    const templateParams = {
-
-        from_name: name,
-
-        from_email: email,
-
-        message: message
-
-    };
-
-
     statusMessage.textContent =
-        "Sending message...";
-
-    statusMessage.style.color =
-        "#aaa";
+        message;
 
 
-    emailjs
-        .send(
-            "service_qtbzwds",
-            "template_p980pca",
-            templateParams
-        )
+    if (type === "success") {
 
-        .then(response => {
+        statusMessage.style.color =
+            "#35d07f";
 
-            console.log(
-                "SUCCESS!",
-                response.status,
-                response.text
-            );
+    }
 
-            statusMessage.textContent =
-                "Message sent successfully!";
+    else if (type === "error") {
 
-            statusMessage.style.color =
-                "#55ff9a";
+        statusMessage.style.color =
+            "#ff4040";
 
-            contactForm.reset();
+    }
 
-        })
+    else {
 
-        .catch(error => {
+        statusMessage.style.color =
+            "#aaa";
 
-            console.error(
-                "EMAILJS ERROR:",
-                error
-            );
-
-            statusMessage.textContent =
-                "Failed to send message. Please try again.";
-
-            statusMessage.style.color =
-                "#ff5252";
-
-        });
+    }
 
 }
 
 
-/* =========================================================
-   PROJECT IMAGE ERROR HANDLING
-========================================================= */
+/* =====================================================
+   ACTIVE NAVIGATION ON SCROLL
+====================================================== */
 
-/*
-   If one of the uploaded project images is missing,
-   the broken-image icon will NOT be shown.
-*/
+const sections =
+    document.querySelectorAll(
+        "section[id], #home"
+    );
 
-document.querySelectorAll(".project-image img")
-    .forEach(image => {
 
-        image.addEventListener(
-            "error",
-            function () {
+const navLinks =
+    document.querySelectorAll(
+        "#sidemenu a"
+    );
 
-                this.style.display = "none";
 
-                const parent =
-                    this.closest(".project-image");
+window.addEventListener(
+    "scroll",
+    function () {
 
-                if (parent) {
+        let currentSection = "";
 
-                    parent.classList.add(
-                        "project-placeholder"
-                    );
 
-                    parent.innerHTML += `
-                        <div class="placeholder-icon">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                    `;
+        sections.forEach(
+            function (section) {
+
+                const sectionTop =
+                    section.offsetTop - 150;
+
+                const sectionHeight =
+                    section.offsetHeight;
+
+
+                if (
+                    window.scrollY >= sectionTop &&
+                    window.scrollY <
+                        sectionTop + sectionHeight
+                ) {
+
+                    currentSection =
+                        section.getAttribute("id");
 
                 }
 
             }
         );
 
-    });
+
+        navLinks.forEach(
+            function (link) {
+
+                link.classList.remove(
+                    "active-nav"
+                );
 
 
-/* =========================================================
-   SKILLS IMAGE ERROR HANDLING
-========================================================= */
-
-const skillsImage =
-    document.querySelector(
-        ".skills-image-card img"
-    );
+                const href =
+                    link.getAttribute("href");
 
 
-if (skillsImage) {
+                if (
+                    href === `#${currentSection}`
+                ) {
 
-    skillsImage.addEventListener(
-        "error",
-        function () {
+                    link.classList.add(
+                        "active-nav"
+                    );
 
-            this.style.display = "none";
-
-            const parent =
-                this.closest(".skills-image-card");
-
-            if (parent) {
-
-                parent.style.minHeight = "360px";
-
-                parent.style.display = "flex";
-
-                parent.style.alignItems =
-                    "center";
-
-                parent.style.justifyContent =
-                    "center";
-
-                parent.innerHTML = `
-
-                    <div style="
-                        text-align:center;
-                        padding:40px;
-                    ">
-
-                        <i
-                            class="fa-solid fa-database"
-                            style="
-                                font-size:55px;
-                                color:#ff3b3b;
-                                margin-bottom:20px;
-                            "
-                        ></i>
-
-                        <h3>
-                            Data Engineering
-                        </h3>
-
-                        <p style="
-                            color:#888;
-                            margin-top:8px;
-                        ">
-                            Azure • Databricks • PySpark • SQL
-                        </p>
-
-                    </div>
-
-                `;
+                }
 
             }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
-
-const currentYear =
-    new Date().getFullYear();
-
-const copyright =
-    document.querySelector(".copyright");
-
-
-if (copyright) {
-
-    copyright.innerHTML =
-        `© ${currentYear} Abhishek Niraj.
-         Built with passion for data engineering.`;
-
-}
-
-
-/* =========================================================
-   TYPING / REVEAL EFFECT
-========================================================= */
-
-const heroLine =
-    document.querySelector(".animated-line");
-
-
-if (heroLine) {
-
-    heroLine.classList.add(
-        "typing-ready"
-    );
-
-}
-
-
-/* =========================================================
-   CURSOR INTERACTION FOR CARDS
-========================================================= */
-
-const interactiveCards =
-    document.querySelectorAll(
-        ".skill-card, .project-card, .cert-card"
-    );
-
-
-interactiveCards.forEach(card => {
-
-    card.addEventListener(
-        "mousemove",
-        event => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                event.clientX - rect.left;
-
-            const y =
-                event.clientY - rect.top;
-
-            card.style.setProperty(
-                "--mouse-x",
-                `${x}px`
-            );
-
-            card.style.setProperty(
-                "--mouse-y",
-                `${y}px`
-            );
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   PREVENT IMAGE DRAGGING
-========================================================= */
-
-document.querySelectorAll("img")
-    .forEach(image => {
-
-        image.addEventListener(
-            "dragstart",
-            event => event.preventDefault()
         );
 
-    });
+    }
+);
+
+
+/* =====================================================
+   IMAGE SAFETY
+====================================================== */
+
+document
+    .querySelectorAll("img")
+    .forEach(
+        function (image) {
+
+            image.addEventListener(
+                "error",
+                function () {
+
+                    if (
+                        image.classList.contains(
+                            "project-image"
+                        )
+                    ) {
+
+                        image.style.background =
+                            "#151515";
+
+                    }
+
+                }
+            );
+
+        }
+    );
