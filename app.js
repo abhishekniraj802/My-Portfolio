@@ -5,6 +5,29 @@
 
 
 /* =====================================================
+   DOM ELEMENTS
+====================================================== */
+
+const sidemenu =
+    document.getElementById("sidemenu");
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const scrollToTopBtn =
+    document.getElementById("scrollToTopBtn");
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const statusMessage =
+    document.getElementById("statusMessage");
+
+const contactSubmitBtn =
+    document.getElementById("contactSubmitBtn");
+
+
+/* =====================================================
    TAB SWITCHING
 ====================================================== */
 
@@ -34,6 +57,7 @@ function opentab(tabName) {
     const selectedContent =
         document.getElementById(tabName);
 
+
     if (selectedContent) {
 
         selectedContent.classList.add("active-tab");
@@ -45,6 +69,7 @@ function opentab(tabName) {
 
         const onclickValue =
             tab.getAttribute("onclick");
+
 
         if (
             onclickValue &&
@@ -64,33 +89,138 @@ function opentab(tabName) {
    MOBILE MENU
 ====================================================== */
 
-const sidemenu =
-    document.getElementById("sidemenu");
-
-
 function openmenu() {
 
-    if (sidemenu) {
+    if (!sidemenu) {
 
-        sidemenu.classList.add("active");
+        return;
+
+    }
+
+
+    sidemenu.classList.add("active");
+
+    document.body.classList.add("menu-open");
+
+
+    if (menuToggle) {
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
 
     }
 
 }
 
+
+/* =====================================================
+   CLOSE MOBILE MENU
+====================================================== */
 
 function closemenu() {
 
-    if (sidemenu) {
+    if (!sidemenu) {
 
-        sidemenu.classList.remove("active");
+        return;
+
+    }
+
+
+    sidemenu.classList.remove("active");
+
+    document.body.classList.remove("menu-open");
+
+
+    if (menuToggle) {
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
 
     }
 
 }
 
 
-/* Close menu when navigation link is clicked */
+/* =====================================================
+   TOGGLE MOBILE MENU
+====================================================== */
+
+function toggleMenu() {
+
+    if (!sidemenu) {
+
+        return;
+
+    }
+
+
+    const isOpen =
+        sidemenu.classList.contains("active");
+
+
+    if (isOpen) {
+
+        closemenu();
+
+    } else {
+
+        openmenu();
+
+    }
+
+}
+
+
+/* =====================================================
+   MENU BUTTON CLICK
+====================================================== */
+
+if (menuToggle) {
+
+    menuToggle.addEventListener(
+        "click",
+        toggleMenu
+    );
+
+
+    menuToggle.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                toggleMenu();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MENU AFTER NAVIGATION
+====================================================== */
 
 document
     .querySelectorAll("#sidemenu a")
@@ -98,10 +228,100 @@ document
 
         link.addEventListener(
             "click",
-            closemenu
+            function () {
+
+                closemenu();
+
+            }
         );
 
     });
+
+
+/* =====================================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+====================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (!sidemenu || !menuToggle) {
+
+            return;
+
+        }
+
+
+        const clickedInsideMenu =
+            sidemenu.contains(event.target);
+
+        const clickedMenuButton =
+            menuToggle.contains(event.target);
+
+
+        if (
+            sidemenu.classList.contains("active") &&
+            !clickedInsideMenu &&
+            !clickedMenuButton
+        ) {
+
+            closemenu();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE MENU WITH ESCAPE
+====================================================== */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            sidemenu &&
+            sidemenu.classList.contains("active")
+        ) {
+
+            closemenu();
+
+            if (menuToggle) {
+
+                menuToggle.focus();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE MENU IF SCREEN BECOMES DESKTOP
+====================================================== */
+
+window.addEventListener(
+    "resize",
+    function () {
+
+        if (
+            window.innerWidth > 900 &&
+            sidemenu &&
+            sidemenu.classList.contains("active")
+        ) {
+
+            closemenu();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -121,8 +341,8 @@ resumeButtons.forEach((button) => {
         function () {
 
             /*
-             * Resume is handled directly by the
-             * download attribute in HTML.
+             * Resume is handled directly
+             * by the download attribute.
              */
 
         }
@@ -132,182 +352,184 @@ resumeButtons.forEach((button) => {
 
 
 /* =====================================================
-   SCROLL TO TOP BUTTON
+   SCROLL TO TOP
 ====================================================== */
-
-const scrollToTopBtn =
-    document.getElementById("scrollToTopBtn");
-
 
 if (scrollToTopBtn) {
 
-    window.addEventListener("scroll", () => {
+    window.addEventListener(
+        "scroll",
+        function () {
 
-        if (window.scrollY > 300) {
+            if (window.scrollY > 300) {
 
-            scrollToTopBtn.classList.add("show");
+                scrollToTopBtn.classList.add("show");
 
-        } else {
+            } else {
 
-            scrollToTopBtn.classList.remove("show");
+                scrollToTopBtn.classList.remove("show");
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    scrollToTopBtn.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
 
         }
-
-    });
-
-
-    scrollToTopBtn.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    });
+    );
 
 }
 
 
 /* =====================================================
-   ACTIVE LINK HIGHLIGHTING
+   ACTIVE NAVIGATION
 ====================================================== */
 
-function highlightActiveLink() {
-
-    const navLinks =
-        document.querySelectorAll(
-            "#sidemenu a[href^='#']"
-        );
-
-    const sections =
-        document.querySelectorAll("[id]");
+const navLinks =
+    document.querySelectorAll(
+        "#sidemenu a[href^='#']"
+    );
 
 
-    window.addEventListener("scroll", () => {
+const sections =
+    document.querySelectorAll(
+        "section[id], #home"
+    );
 
-        let current = "";
+
+function updateActiveNavigation() {
+
+    let currentSection = "home";
 
 
-        sections.forEach((section) => {
+    const scrollPosition =
+        window.scrollY + 180;
+
+
+    sections.forEach(
+        function (section) {
 
             const sectionTop =
                 section.offsetTop;
 
             const sectionHeight =
-                section.clientHeight;
+                section.offsetHeight;
 
 
             if (
-                window.pageYOffset >=
-                sectionTop - 200
+                scrollPosition >= sectionTop &&
+                scrollPosition <
+                    sectionTop + sectionHeight
             ) {
 
-                current =
+                currentSection =
                     section.getAttribute("id");
 
             }
 
-        });
+        }
+    );
 
 
-        navLinks.forEach((link) => {
+    navLinks.forEach(
+        function (link) {
 
-            link.classList.remove("active-nav");
+            const href =
+                link.getAttribute("href");
 
 
-            if (
-                link.getAttribute("href").slice(1) === current
-            ) {
+            link.classList.toggle(
+                "active-nav",
+                href === `#${currentSection}`
+            );
 
-                link.classList.add("active-nav");
-
-            }
-
-        });
-
-    });
+        }
+    );
 
 }
 
-highlightActiveLink();
+
+/* Initial navigation state */
+
+updateActiveNavigation();
+
+
+/* Update navigation while scrolling */
+
+window.addEventListener(
+    "scroll",
+    updateActiveNavigation,
+    {
+        passive: true
+    }
+);
 
 
 /* =====================================================
-   TYPED HERO TITLE + DESCRIPTION
+   TYPED HERO TITLE
 ====================================================== */
-
-/*
- * IMPORTANT:
- *
- * STEP 1:
- * Data Engineer
- *
- * STEP 2:
- * Azure Databricks Specialist
- *
- * STEP 3:
- * Description starts only AFTER the title sequence
- *
- * The description has its own slower typing speed.
- */
-
 
 if (
     typeof Typed !== "undefined" &&
     document.querySelector(".auto-type")
 ) {
 
-    const heroTitle =
-        new Typed(
-            ".auto-type",
-            {
+    new Typed(
+        ".auto-type",
+        {
 
-                strings: [
+            strings: [
 
-                    "Data Engineer",
+                "Data Engineer",
 
-                    "Azure Databricks Specialist"
+                "Azure Databricks Specialist"
 
-                ],
+            ],
 
-                typeSpeed: 70,
+            typeSpeed:
+                70,
 
-                backSpeed: 45,
+            backSpeed:
+                45,
 
-                backDelay: 2200,
+            backDelay:
+                2200,
 
-                startDelay: 500,
+            startDelay:
+                500,
 
-                loop: true,
+            loop:
+                true,
 
-                showCursor: true,
+            showCursor:
+                true,
 
-                cursorChar: "|",
+            cursorChar:
+                "|"
 
-                onStringTyped: function () {
-
-                    /*
-                     * Description is intentionally
-                     * handled separately below.
-                     *
-                     * This callback is kept here
-                     * so the title animation remains
-                     * independent and smooth.
-                     */
-
-                }
-
-            }
-        );
+        }
+    );
 
 }
 
 
 /* =====================================================
-   HERO DESCRIPTION TYPING
+   TYPED HERO DESCRIPTION
 ====================================================== */
 
 if (
@@ -325,19 +547,26 @@ if (
 
             ],
 
-            typeSpeed: 28,
+            typeSpeed:
+                28,
 
-            backSpeed: 0,
+            backSpeed:
+                0,
 
-            backDelay: 5000,
+            backDelay:
+                5000,
 
-            startDelay: 4200,
+            startDelay:
+                4200,
 
-            loop: true,
+            loop:
+                true,
 
-            showCursor: true,
+            showCursor:
+                true,
 
-            cursorChar: "|"
+            cursorChar:
+                "|"
 
         }
     );
@@ -346,20 +575,8 @@ if (
 
 
 /* =====================================================
-   EMAILJS
+   EMAILJS INITIALIZATION
 ====================================================== */
-
-const contactForm =
-    document.getElementById("contactForm");
-
-
-const statusMessage =
-    document.getElementById("statusMessage");
-
-
-/*
- * Initialize EmailJS
- */
 
 if (
     typeof emailjs !== "undefined"
@@ -376,38 +593,49 @@ if (
 
 
 /* =====================================================
-   SEND EMAIL
+   CONTACT FORM
 ====================================================== */
 
 if (contactForm) {
 
     contactForm.addEventListener(
         "submit",
-        function (event) {
+        async function (event) {
 
             event.preventDefault();
 
 
+            const nameInput =
+                document.getElementById("name");
+
+            const emailInput =
+                document.getElementById("email");
+
+            const messageInput =
+                document.getElementById("message");
+
+
             const name =
-                document
-                    .getElementById("name")
-                    .value
-                    .trim();
+                nameInput
+                    ? nameInput.value.trim()
+                    : "";
 
 
             const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
+                emailInput
+                    ? emailInput.value.trim()
+                    : "";
 
 
             const message =
-                document
-                    .getElementById("message")
-                    .value
-                    .trim();
+                messageInput
+                    ? messageInput.value.trim()
+                    : "";
 
+
+            /* -----------------------------------------
+               VALIDATION
+            ----------------------------------------- */
 
             if (
                 !name ||
@@ -425,11 +653,45 @@ if (contactForm) {
             }
 
 
+            /* Basic email validation */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (!emailPattern.test(email)) {
+
+                showStatus(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* -----------------------------------------
+               PREVENT DOUBLE SUBMISSION
+            ----------------------------------------- */
+
+            if (contactSubmitBtn) {
+
+                contactSubmitBtn.disabled =
+                    true;
+
+            }
+
+
             showStatus(
                 "Sending message...",
                 "loading"
             );
 
+
+            /* -----------------------------------------
+               EMAILJS PARAMETERS
+            ----------------------------------------- */
 
             const templateParams = {
 
@@ -445,50 +707,58 @@ if (contactForm) {
             };
 
 
-            emailjs
-                .send(
-                    "service_qtbzwds",
-                    "template_p980pca",
-                    templateParams
-                )
+            try {
 
-                .then(
-                    function (response) {
-
-                        console.log(
-                            "SUCCESS!",
-                            response.status,
-                            response.text
-                        );
+                const response =
+                    await emailjs.send(
+                        "service_qtbzwds",
+                        "template_p980pca",
+                        templateParams
+                    );
 
 
-                        showStatus(
-                            "Message sent successfully!",
-                            "success"
-                        );
-
-
-                        contactForm.reset();
-
-                    }
-                )
-
-                .catch(
-                    function (error) {
-
-                        console.error(
-                            "EMAILJS ERROR:",
-                            error
-                        );
-
-
-                        showStatus(
-                            "Failed to send message. Please try again.",
-                            "error"
-                        );
-
-                    }
+                console.log(
+                    "SUCCESS!",
+                    response.status,
+                    response.text
                 );
+
+
+                showStatus(
+                    "Message sent successfully!",
+                    "success"
+                );
+
+
+                contactForm.reset();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "EMAILJS ERROR:",
+                    error
+                );
+
+
+                showStatus(
+                    "Failed to send message. Please try again.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                if (contactSubmitBtn) {
+
+                    contactSubmitBtn.disabled =
+                        false;
+
+                }
+
+            }
 
         }
     );
@@ -538,83 +808,6 @@ function showStatus(
     }
 
 }
-
-
-/* =====================================================
-   ACTIVE NAVIGATION ON SCROLL
-====================================================== */
-
-const sections =
-    document.querySelectorAll(
-        "section[id], #home"
-    );
-
-
-const navLinks =
-    document.querySelectorAll(
-        "#sidemenu a"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        let currentSection = "";
-
-
-        sections.forEach(
-            function (section) {
-
-                const sectionTop =
-                    section.offsetTop - 150;
-
-                const sectionHeight =
-                    section.offsetHeight;
-
-
-                if (
-                    window.scrollY >= sectionTop &&
-                    window.scrollY <
-                        sectionTop + sectionHeight
-                ) {
-
-                    currentSection =
-                        section.getAttribute("id");
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            function (link) {
-
-                link.classList.remove(
-                    "active-nav"
-                );
-
-
-                const href =
-                    link.getAttribute("href");
-
-
-                if (
-                    href === `#${currentSection}`
-                ) {
-
-                    link.classList.add(
-                        "active-nav"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
 
 
 /* =====================================================
