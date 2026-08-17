@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
 /* =====================================================
    ROOT
 ====================================================== */
@@ -39,11 +40,9 @@ html {
 
 body {
     background:
-        radial-gradient(
-            circle at top right,
+        radial-gradient(circle at top right,
             rgba(180, 0, 0, 0.08),
-            transparent 30%
-        ),
+            transparent 30%),
         var(--bg);
 
     color: var(--text);
@@ -52,10 +51,6 @@ body {
     overflow-x: hidden;
     width: 100%;
     min-width: 0;
-}
-
-body.menu-open {
-    overflow: hidden;
 }
 
 img {
@@ -96,10 +91,9 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        #ff3030,
-        #a00000
-    );
+    background: linear-gradient(#ff3030,
+            #a00000);
+
     border-radius: 20px;
 }
 
@@ -112,12 +106,10 @@ textarea {
     min-height: 100vh;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(0, 0, 0, 0.95),
             rgba(0, 0, 0, 0.7),
-            rgba(0, 0, 0, 0.9)
-        ),
+            rgba(0, 0, 0, 0.9)),
         url("./assets/header 1.jpeg");
 
     background-size: cover;
@@ -138,17 +130,15 @@ textarea {
     height: 180px;
 
     background:
-        linear-gradient(
-            transparent,
-            var(--bg)
-        );
+        linear-gradient(transparent,
+            var(--bg));
 
     pointer-events: none;
 }
 
 
 /* =====================================================
-   NAV
+   NAVIGATION
 ====================================================== */
 
 nav {
@@ -169,7 +159,7 @@ nav {
     align-items: center;
 
     position: relative;
-    z-index: 1003;
+    z-index: 1006;
 }
 
 .logo {
@@ -183,6 +173,8 @@ nav {
 nav ul {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+
     gap: 10px;
 
     margin: 0;
@@ -221,11 +213,9 @@ nav ul li a::after {
     height: 2px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--red),
-            var(--red-light)
-        );
+            var(--red-light));
 
     transform: scaleX(0);
     transform-origin: right;
@@ -253,42 +243,111 @@ nav ul li a.active-nav::after {
 
 
 /* =====================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU TOGGLE
 ====================================================== */
 
-.menu-open {
+.mobile-menu-btn {
     display: none;
-
-    width: 42px;
-    height: 42px;
 
     align-items: center;
     justify-content: center;
 
-    font-size: 25px;
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.04);
 
     color: #ffffff;
 
+    font-size: 24px;
+
     cursor: pointer;
 
-    user-select: none;
-
     position: relative;
-    z-index: 1004;
+    z-index: 1006;
 
-    transition:
-        color 0.25s ease,
-        transform 0.25s ease;
+    transition: all 0.3s ease;
 }
 
-.menu-open:hover {
+.mobile-menu-btn:hover {
+    border-color: rgba(255, 40, 40, 0.5);
+
+    background: rgba(255, 0, 0, 0.1);
+
     color: #ff4040;
 }
 
-.menu-open:focus-visible {
-    outline: 2px solid #ff3030;
-    outline-offset: 5px;
-    border-radius: 4px;
+
+/* =====================================================
+   MOBILE MENU CLOSE
+====================================================== */
+
+.mobile-menu-close-wrapper {
+    display: none;
+}
+
+.mobile-menu-close {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+    border-color: #ff3030;
+
+    color: #ff4040;
+
+    background: rgba(255, 0, 0, 0.1);
+
+    transform: rotate(90deg);
+}
+
+
+/* =====================================================
+   MOBILE MENU OVERLAY
+====================================================== */
+
+.mobile-menu-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 1003;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 
@@ -314,11 +373,13 @@ nav ul li a.active-nav::after {
 .hero-badge {
     display: inline-flex;
     align-items: center;
+
     gap: 9px;
 
     width: fit-content;
 
     padding: 8px 15px;
+
     margin-bottom: 25px;
 
     border: 1px solid rgba(255, 48, 48, 0.3);
@@ -343,10 +404,16 @@ nav ul li a.active-nav::after {
     box-shadow: 0 0 10px #31d158;
 }
 
-.header-text h1 {
-    font-size: clamp(42px, 6vw, 75px);
 
-    line-height: 1.08;
+/* =====================================================
+   MAIN HERO HEADING
+   MEDIUM SIZE
+====================================================== */
+
+.header-text h1 {
+    font-size: clamp(34px, 4.5vw, 58px);
+
+    line-height: 1.12;
 
     font-weight: 600;
 }
@@ -382,10 +449,12 @@ nav ul li a.active-nav::after {
 
 .hero-description strong {
     color: #f5f5f5;
+
     font-weight: 700;
 }
 
 @keyframes heroDescriptionReveal {
+
     from {
         opacity: 0;
         transform: translateY(18px);
@@ -399,12 +468,15 @@ nav ul li a.active-nav::after {
 
 .box-icons {
     display: flex;
+
     gap: 8px;
+
     margin-top: 25px;
 }
 
 .box-icons a {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -436,7 +508,9 @@ nav ul li a.active-nav::after {
 
 .hero-buttons {
     display: flex;
+
     gap: 15px;
+
     flex-wrap: wrap;
 
     margin-top: 35px;
@@ -445,6 +519,7 @@ nav ul li a.active-nav::after {
 .primary-btn,
 .secondary-btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -455,6 +530,7 @@ nav ul li a.active-nav::after {
     border-radius: 10px;
 
     font-size: 14px;
+
     font-weight: 500;
 
     transition: all 0.3s ease;
@@ -462,11 +538,9 @@ nav ul li a.active-nav::after {
 
 .primary-btn {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #f00000,
-            #a00000
-        );
+            #a00000);
 
     border: 1px solid #ff3030;
 }
@@ -503,6 +577,7 @@ nav ul li a.active-nav::after {
 
 .section-heading {
     text-align: center;
+
     margin-bottom: 55px;
 }
 
@@ -510,6 +585,7 @@ nav ul li a.active-nav::after {
     color: #ff3030;
 
     font-size: 12px;
+
     font-weight: 600;
 
     letter-spacing: 3px;
@@ -534,11 +610,9 @@ nav ul li a.active-nav::after {
     margin: 12px auto 0;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--red),
-            var(--red-light)
-        );
+            var(--red-light));
 
     border-radius: 10px;
 }
@@ -550,11 +624,9 @@ nav ul li a.active-nav::after {
 
 .about {
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             var(--bg),
-            #0c0c0c
-        );
+            #0c0c0c);
 }
 
 .about-grid {
@@ -591,11 +663,9 @@ nav ul li a.active-nav::after {
     inset: -30px;
 
     background:
-        radial-gradient(
-            circle,
+        radial-gradient(circle,
             rgba(220, 0, 0, 0.12),
-            transparent 65%
-        );
+            transparent 65%);
 
     z-index: 0;
 
@@ -616,9 +686,11 @@ nav ul li a.active-nav::after {
 
 .profile-card-info {
     position: relative;
+
     z-index: 2;
 
     display: flex;
+
     flex-direction: column;
 
     padding: 18px 8px 8px;
@@ -630,6 +702,7 @@ nav ul li a.active-nav::after {
 
 .profile-card-info span {
     color: #999;
+
     font-size: 13px;
 }
 
@@ -718,9 +791,11 @@ nav ul li a.active-nav::after {
     position: absolute;
 
     left: 0;
+
     bottom: -7px;
 
     height: 2px;
+
     width: 0;
 
     background: #ff3030;
@@ -790,11 +865,9 @@ nav ul li a.active-nav::after {
     border-radius: 28px;
 
     background:
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(255, 255, 255, 0.045),
-            rgba(255, 255, 255, 0.012)
-        );
+            rgba(255, 255, 255, 0.012));
 
     box-shadow: var(--shadow);
 
@@ -825,11 +898,9 @@ nav ul li a.active-nav::after {
     border-radius: 16px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #ff3030,
-            #a00000
-        );
+            #a00000);
 
     font-size: 24px;
 
@@ -839,6 +910,7 @@ nav ul li a.active-nav::after {
 
 .skill-category-header h2 {
     font-size: 27px;
+
     font-weight: 600;
 }
 
@@ -1023,6 +1095,10 @@ nav ul li a.active-nav::after {
     object-fit: contain;
 }
 
+.legacy-skill i {
+    font-size: 28px;
+}
+
 .legacy-skill span {
     color: #999;
 
@@ -1062,11 +1138,9 @@ nav ul li a.active-nav::after {
     border-radius: 25px;
 
     background:
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(255, 255, 255, 0.04),
-            rgba(255, 255, 255, 0.015)
-        );
+            rgba(255, 255, 255, 0.015));
 
     transition: all 0.3s ease;
 }
@@ -1120,7 +1194,9 @@ nav ul li a.active-nav::after {
 
 .featured-project .project-image {
     object-fit: contain;
+
     object-position: center;
+
     transform: none;
 }
 
@@ -1132,6 +1208,7 @@ nav ul li a.active-nav::after {
     position: absolute;
 
     left: 15px;
+
     bottom: 15px;
 
     padding: 7px 12px;
@@ -1270,7 +1347,7 @@ nav ul li a.active-nav::after {
         rgba(255, 40, 40, 0.3);
 }
 
-.other-project-card > img {
+.other-project-card>img {
     width: 100%;
     height: 145px;
 
@@ -1462,7 +1539,7 @@ nav ul li a.active-nav::after {
     margin-bottom: 10px;
 }
 
-.contact-card > p {
+.contact-card>p {
     color: #888;
 
     font-size: 13px;
@@ -1578,11 +1655,9 @@ nav ul li a.active-nav::after {
     color: #fff;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #e00000,
-            #a00000
-        );
+            #a00000);
 
     cursor: pointer;
 
@@ -1672,11 +1747,9 @@ nav ul li a.active-nav::after {
     height: 50px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--red),
-            var(--red-light)
-        );
+            var(--red-light));
 
     color: #ffffff;
 
@@ -1718,107 +1791,107 @@ nav ul li a.active-nav::after {
 
 
 /* =====================================================
-   TABLET / MOBILE
+   TABLET
 ====================================================== */
 
 @media (max-width: 900px) {
 
-    /* ------------------------------
-       MOBILE MENU
-    ------------------------------ */
+    nav {
+        align-items: center;
+    }
 
-    .menu-open {
+    .mobile-menu-btn {
         display: flex;
     }
 
-    nav {
-        position: relative;
-        z-index: 1000;
+    .mobile-menu-close-wrapper {
+        display: block;
+
+        position: absolute;
+
+        top: 18px;
+        right: 18px;
     }
 
-    nav ul {
+    nav ul#sidemenu {
         position: fixed;
 
         top: 0;
         right: 0;
 
-        width: min(280px, 82vw);
-        height: 100dvh;
+        height: 100vh;
 
-        padding: 90px 25px 30px;
+        width: min(320px, 82vw);
 
         display: flex;
+
         flex-direction: column;
 
         align-items: flex-start;
 
-        gap: 8px;
+        justify-content: flex-start;
+
+        gap: 4px;
+
+        padding: 85px 24px 30px;
 
         background:
-            rgba(10, 10, 10, 0.98);
+            linear-gradient(180deg,
+                var(--card),
+                var(--bg));
 
         border-left:
-            1px solid rgba(255, 40, 40, 0.2);
+            1px solid var(--border);
 
-        box-shadow:
-            -15px 0 40px rgba(0, 0, 0, 0.45);
+        box-shadow: var(--shadow);
 
         transform: translateX(100%);
 
         transition:
-            transform 0.3s ease;
-
-        z-index: 1002;
+            transform 0.35s ease;
 
         overflow-y: auto;
-        overflow-x: hidden;
 
-        visibility: hidden;
-        pointer-events: none;
+        z-index: 1004;
     }
 
-    nav ul.active {
+    nav ul#sidemenu.active {
         transform: translateX(0);
-
-        visibility: visible;
-
-        pointer-events: auto;
     }
 
-    nav ul li {
+    nav ul#sidemenu li {
         width: 100%;
     }
 
-    nav ul li a {
+    nav ul#sidemenu li a {
         display: block;
 
         width: 100%;
 
-        padding: 13px 5px;
+        padding: 14px 12px;
 
-        font-size: 15px;
+        font-size: 16px;
+
+        border-radius: 10px;
     }
 
-    nav ul li a::after {
-        left: 5px;
-        right: auto;
+    nav ul#sidemenu li a:hover {
+        background: rgba(255, 0, 0, 0.08);
+    }
 
-        width: 35px;
+    nav ul#sidemenu li a::after {
+        display: none;
     }
 
 
-    /* ------------------------------
-       HERO
-    ------------------------------ */
+    /* HERO */
 
     .header-text {
         padding-top: 50px;
     }
 
 
-    /* ------------------------------
-       ABOUT
-    ------------------------------ */
+    /* ABOUT */
 
     .about-grid {
         grid-template-columns: 1fr;
@@ -1834,9 +1907,7 @@ nav ul li a.active-nav::after {
     }
 
 
-    /* ------------------------------
-       PROJECTS
-    ------------------------------ */
+    /* PROJECTS */
 
     .project-card {
         grid-template-columns: 1fr;
@@ -1847,9 +1918,7 @@ nav ul li a.active-nav::after {
     }
 
 
-    /* ------------------------------
-       SKILLS
-    ------------------------------ */
+    /* SKILLS */
 
     .data-engineering-category {
         padding: 22px;
@@ -1869,9 +1938,7 @@ nav ul li a.active-nav::after {
     }
 
 
-    /* ------------------------------
-       OTHER PROJECTS
-    ------------------------------ */
+    /* OTHER PROJECTS */
 
     .other-project-grid {
         grid-template-columns: 1fr;
@@ -1881,14 +1948,12 @@ nav ul li a.active-nav::after {
         grid-template-columns: 1fr;
     }
 
-    .other-project-card > img {
+    .other-project-card>img {
         height: 190px;
     }
 
 
-    /* ------------------------------
-       CERTIFICATIONS / CONTACT
-    ------------------------------ */
+    /* CERTIFICATIONS / CONTACT */
 
     .certification-grid,
     .contact-grid {
@@ -1896,9 +1961,7 @@ nav ul li a.active-nav::after {
     }
 
 
-    /* ------------------------------
-       FOOTER
-    ------------------------------ */
+    /* FOOTER */
 
     .footer-content {
         flex-direction: column;
@@ -1907,9 +1970,7 @@ nav ul li a.active-nav::after {
     }
 
 
-    /* ------------------------------
-       SCROLL TOP
-    ------------------------------ */
+    /* SCROLL TOP */
 
     .scroll-to-top {
         width: 45px;
@@ -1963,8 +2024,13 @@ nav ul li a.active-nav::after {
         padding: 75px 0;
     }
 
+
+    /* HERO - MEDIUM SIZE */
+
     .header-text h1 {
-        font-size: 42px;
+        font-size: 34px;
+
+        line-height: 1.15;
     }
 
     .hero-description br {
@@ -1980,16 +2046,32 @@ nav ul li a.active-nav::after {
         justify-content: center;
     }
 
+
+    /* SKILLS */
+
     .skill-category-header h2 {
         font-size: 22px;
     }
+
+
+    /* LEGACY SKILLS */
 
     .legacy-skill-box {
         padding: 20px;
     }
 
+
+    /* CERTIFICATIONS */
+
     .certification-card {
         padding: 20px;
+    }
+
+
+    /* MOBILE MENU PANEL */
+
+    nav ul#sidemenu {
+        width: 86vw;
     }
 }
 
@@ -2005,7 +2087,7 @@ nav ul li a.active-nav::after {
     }
 
     .header-text h1 {
-        font-size: 36px;
+        font-size: 32px;
 
         line-height: 1.3;
     }
@@ -2016,12 +2098,6 @@ nav ul li a.active-nav::after {
 
     .hero-description {
         font-size: 14px;
-    }
-
-    nav ul li a {
-        font-size: 13px;
-
-        padding: 8px;
     }
 
     .primary-btn,
@@ -2044,6 +2120,12 @@ nav ul li a.active-nav::after {
         bottom: 15px;
         right: 15px;
     }
+
+    nav ul#sidemenu {
+        width: 92vw;
+
+        padding: 75px 18px 24px;
+    }
 }
 
 
@@ -2055,6 +2137,7 @@ p,
 span,
 a {
     overflow-wrap: break-word;
+
     word-wrap: break-word;
 }
 
@@ -2087,5 +2170,9 @@ section[id] {
         opacity: 1;
 
         transform: none;
+    }
+
+    nav ul#sidemenu {
+        transition: none;
     }
 }
