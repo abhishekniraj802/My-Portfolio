@@ -8,11 +8,8 @@
    DOM ELEMENTS
 ====================================================== */
 
-const sidemenu =
-    document.getElementById("sidemenu");
-
-const menuToggle =
-    document.getElementById("menuToggle");
+const sidemenu = document.getElementById("sidemenu");
+const menuToggle = document.getElementById("menuToggle");
 
 const scrollToTopBtn =
     document.getElementById("scrollToTopBtn");
@@ -40,14 +37,14 @@ function opentab(tabName) {
         document.querySelectorAll(".tab-links");
 
 
-    contents.forEach((content) => {
+    contents.forEach(function (content) {
 
         content.classList.remove("active-tab");
 
     });
 
 
-    tabs.forEach((tab) => {
+    tabs.forEach(function (tab) {
 
         tab.classList.remove("active-link");
 
@@ -65,7 +62,7 @@ function opentab(tabName) {
     }
 
 
-    tabs.forEach((tab) => {
+    tabs.forEach(function (tab) {
 
         const onclickValue =
             tab.getAttribute("onclick");
@@ -73,7 +70,7 @@ function opentab(tabName) {
 
         if (
             onclickValue &&
-            onclickValue.includes(`'${tabName}'`)
+            onclickValue.includes("'" + tabName + "'")
         ) {
 
             tab.classList.add("active-link");
@@ -92,13 +89,12 @@ function opentab(tabName) {
 function openmenu() {
 
     if (!sidemenu) {
-
         return;
-
     }
 
 
     sidemenu.classList.add("active");
+
 
     document.body.classList.add("menu-open");
 
@@ -127,13 +123,12 @@ function openmenu() {
 function closemenu() {
 
     if (!sidemenu) {
-
         return;
-
     }
 
 
     sidemenu.classList.remove("active");
+
 
     document.body.classList.remove("menu-open");
 
@@ -159,20 +154,23 @@ function closemenu() {
    TOGGLE MOBILE MENU
 ====================================================== */
 
-function toggleMenu() {
+function toggleMenu(event) {
 
-    if (!sidemenu) {
+    if (event) {
 
-        return;
+        event.preventDefault();
+
+        event.stopPropagation();
 
     }
 
 
-    const isOpen =
-        sidemenu.classList.contains("active");
+    if (!sidemenu) {
+        return;
+    }
 
 
-    if (isOpen) {
+    if (sidemenu.classList.contains("active")) {
 
         closemenu();
 
@@ -186,7 +184,7 @@ function toggleMenu() {
 
 
 /* =====================================================
-   MENU BUTTON CLICK
+   MENU BUTTON
 ====================================================== */
 
 if (menuToggle) {
@@ -196,35 +194,20 @@ if (menuToggle) {
         toggleMenu
     );
 
-
-    menuToggle.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                toggleMenu();
-
-            }
-
-        }
-    );
-
 }
 
 
 /* =====================================================
-   CLOSE MENU AFTER NAVIGATION
+   NAVIGATION LINKS
 ====================================================== */
 
-document
-    .querySelectorAll("#sidemenu a")
-    .forEach((link) => {
+if (sidemenu) {
+
+    const menuLinks =
+        sidemenu.querySelectorAll("a");
+
+
+    menuLinks.forEach(function (link) {
 
         link.addEventListener(
             "click",
@@ -237,6 +220,8 @@ document
 
     });
 
+}
+
 
 /* =====================================================
    CLOSE MENU WHEN CLICKING OUTSIDE
@@ -247,9 +232,12 @@ document.addEventListener(
     function (event) {
 
         if (!sidemenu || !menuToggle) {
-
             return;
+        }
 
+
+        if (!sidemenu.classList.contains("active")) {
+            return;
         }
 
 
@@ -261,7 +249,6 @@ document.addEventListener(
 
 
         if (
-            sidemenu.classList.contains("active") &&
             !clickedInsideMenu &&
             !clickedMenuButton
         ) {
@@ -275,26 +262,24 @@ document.addEventListener(
 
 
 /* =====================================================
-   CLOSE MENU WITH ESCAPE
+   ESCAPE KEY
 ====================================================== */
 
 document.addEventListener(
     "keydown",
     function (event) {
 
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
         if (
-            event.key === "Escape" &&
             sidemenu &&
             sidemenu.classList.contains("active")
         ) {
 
             closemenu();
-
-            if (menuToggle) {
-
-                menuToggle.focus();
-
-            }
 
         }
 
@@ -303,7 +288,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   CLOSE MENU IF SCREEN BECOMES DESKTOP
+   CLOSE MENU ON DESKTOP
 ====================================================== */
 
 window.addEventListener(
@@ -334,15 +319,15 @@ const resumeButtons =
     );
 
 
-resumeButtons.forEach((button) => {
+resumeButtons.forEach(function (button) {
 
     button.addEventListener(
         "click",
         function () {
 
             /*
-             * Resume is handled directly
-             * by the download attribute.
+             * Resume download/opening is
+             * handled directly by HTML.
              */
 
         }
@@ -421,55 +406,51 @@ function updateActiveNavigation() {
         window.scrollY + 180;
 
 
-    sections.forEach(
-        function (section) {
+    sections.forEach(function (section) {
 
-            const sectionTop =
-                section.offsetTop;
+        const sectionTop =
+            section.offsetTop;
 
-            const sectionHeight =
-                section.offsetHeight;
+        const sectionHeight =
+            section.offsetHeight;
 
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                    sectionTop + sectionHeight
-            ) {
+        if (
+            scrollPosition >= sectionTop &&
+            scrollPosition <
+                sectionTop + sectionHeight
+        ) {
 
-                currentSection =
-                    section.getAttribute("id");
-
-            }
+            currentSection =
+                section.getAttribute("id");
 
         }
-    );
+
+    });
 
 
-    navLinks.forEach(
-        function (link) {
+    navLinks.forEach(function (link) {
 
-            const href =
-                link.getAttribute("href");
+        const href =
+            link.getAttribute("href");
 
 
-            link.classList.toggle(
-                "active-nav",
-                href === `#${currentSection}`
-            );
+        link.classList.toggle(
+            "active-nav",
+            href === "#" + currentSection
+        );
 
-        }
-    );
+    });
 
 }
 
 
-/* Initial navigation state */
+/* Initial state */
 
 updateActiveNavigation();
 
 
-/* Update navigation while scrolling */
+/* Update while scrolling */
 
 window.addEventListener(
     "scroll",
@@ -494,33 +475,23 @@ if (
         {
 
             strings: [
-
                 "Data Engineer",
-
                 "Azure Databricks Specialist"
-
             ],
 
-            typeSpeed:
-                70,
+            typeSpeed: 70,
 
-            backSpeed:
-                45,
+            backSpeed: 45,
 
-            backDelay:
-                2200,
+            backDelay: 2200,
 
-            startDelay:
-                500,
+            startDelay: 500,
 
-            loop:
-                true,
+            loop: true,
 
-            showCursor:
-                true,
+            showCursor: true,
 
-            cursorChar:
-                "|"
+            cursorChar: "|"
 
         }
     );
@@ -547,26 +518,19 @@ if (
 
             ],
 
-            typeSpeed:
-                28,
+            typeSpeed: 28,
 
-            backSpeed:
-                0,
+            backSpeed: 0,
 
-            backDelay:
-                5000,
+            backDelay: 5000,
 
-            startDelay:
-                4200,
+            startDelay: 4200,
 
-            loop:
-                true,
+            loop: true,
 
-            showCursor:
-                true,
+            showCursor: true,
 
-            cursorChar:
-                "|"
+            cursorChar: "|"
 
         }
     );
@@ -575,12 +539,10 @@ if (
 
 
 /* =====================================================
-   EMAILJS INITIALIZATION
+   EMAILJS
 ====================================================== */
 
-if (
-    typeof emailjs !== "undefined"
-) {
+if (typeof emailjs !== "undefined") {
 
     emailjs.init({
 
@@ -653,8 +615,6 @@ if (contactForm) {
             }
 
 
-            /* Basic email validation */
-
             const emailPattern =
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -677,8 +637,7 @@ if (contactForm) {
 
             if (contactSubmitBtn) {
 
-                contactSubmitBtn.disabled =
-                    true;
+                contactSubmitBtn.disabled = true;
 
             }
 
@@ -695,19 +654,25 @@ if (contactForm) {
 
             const templateParams = {
 
-                from_name:
-                    name,
+                from_name: name,
 
-                from_email:
-                    email,
+                from_email: email,
 
-                message:
-                    message
+                message: message
 
             };
 
 
             try {
+
+                if (typeof emailjs === "undefined") {
+
+                    throw new Error(
+                        "EmailJS library not loaded."
+                    );
+
+                }
+
 
                 const response =
                     await emailjs.send(
@@ -718,7 +683,7 @@ if (contactForm) {
 
 
                 console.log(
-                    "SUCCESS!",
+                    "EMAILJS SUCCESS",
                     response.status,
                     response.text
                 );
@@ -753,8 +718,7 @@ if (contactForm) {
 
                 if (contactSubmitBtn) {
 
-                    contactSubmitBtn.disabled =
-                        false;
+                    contactSubmitBtn.disabled = false;
 
                 }
 
@@ -770,15 +734,10 @@ if (contactForm) {
    STATUS MESSAGE
 ====================================================== */
 
-function showStatus(
-    message,
-    type
-) {
+function showStatus(message, type) {
 
     if (!statusMessage) {
-
         return;
-
     }
 
 
@@ -816,26 +775,24 @@ function showStatus(
 
 document
     .querySelectorAll("img")
-    .forEach(
-        function (image) {
+    .forEach(function (image) {
 
-            image.addEventListener(
-                "error",
-                function () {
+        image.addEventListener(
+            "error",
+            function () {
 
-                    if (
-                        image.classList.contains(
-                            "project-image"
-                        )
-                    ) {
+                if (
+                    image.classList.contains(
+                        "project-image"
+                    )
+                ) {
 
-                        image.style.background =
-                            "#151515";
-
-                    }
+                    image.style.background =
+                        "#151515";
 
                 }
-            );
 
-        }
-    );
+            }
+        );
+
+    });
