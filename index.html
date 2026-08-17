@@ -2,35 +2,87 @@
 <html lang="en" style="scroll-behavior: smooth;">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Abhishek Niraj - Data Engineer specializing in Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake and enterprise data migration.">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
 
-    <meta name="keywords"
-        content="Data Engineer, Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake, Apache Spark, Informatica">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="author" content="Abhishek Niraj">
+    <meta
+        name="description"
+        content="Abhishek Niraj - Data Engineer specializing in Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake and enterprise data migration."
+    >
+
+    <meta
+        name="keywords"
+        content="Data Engineer, Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake, Apache Spark, Informatica"
+    >
+
+    <meta
+        name="author"
+        content="Abhishek Niraj"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080808"
+    >
 
     <title>Abhishek Niraj | Data Engineer</title>
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="./style.css">
 
-    <!-- Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- =================================================
+         MAIN CSS
+    ================================================== -->
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
 
-    <!-- Favicon -->
-    <link rel="icon" href="./assets/titleimg.jpg" type="image/jpeg">
+
+    <!-- =================================================
+         BOXICONS
+    ================================================== -->
+
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =================================================
+         FONT AWESOME
+    ================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =================================================
+         FAVICON
+    ================================================== -->
+
+    <link
+        rel="icon"
+        href="./assets/titleimg.jpg"
+        type="image/jpeg"
+    >
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      NAVIGATION / HERO
@@ -42,33 +94,66 @@
 
         <nav>
 
-            <img
-                src="./assets/icon.png"
-                alt="Abhishek Niraj Logo"
-                class="logo"
+            <!-- LOGO -->
+
+            <a
+                href="#home"
+                class="logo-link"
+                aria-label="Go to Home"
             >
 
-            <ul id="sidemenu">
+                <img
+                    src="./assets/icon.png"
+                    alt="Abhishek Niraj Logo"
+                    class="logo"
+                >
+
+            </a>
+
+
+            <!-- =================================================
+                 NAVIGATION MENU
+            ================================================== -->
+
+            <ul
+                id="sidemenu"
+                aria-label="Main Navigation"
+            >
 
                 <li>
-                    <a href="#home">Home</a>
+                    <a href="#home">
+                        Home
+                    </a>
                 </li>
 
-                <li>
-                    <a href="#about">About</a>
-                </li>
 
                 <li>
-                    <a href="#skills">Skills</a>
+                    <a href="#about">
+                        About
+                    </a>
                 </li>
 
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
 
                 <li>
-                    <a href="#certifications">Certifications</a>
+                    <a href="#skills">
+                        Skills
+                    </a>
                 </li>
+
+
+                <li>
+                    <a href="#projects">
+                        Projects
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#certifications">
+                        Certifications
+                    </a>
+                </li>
+
 
                 <li>
                     <a
@@ -79,20 +164,28 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
 
-                <i
-                    class="fa-solid fa-xmark menu-close"
-                    onclick="closemenu()"
-                ></i>
+                <li>
+                    <a href="#contact">
+                        Contact
+                    </a>
+                </li>
 
             </ul>
 
+
+            <!-- =================================================
+                 MOBILE MENU BUTTON
+            ================================================== -->
+
             <i
                 class="fa-solid fa-bars menu-open"
-                onclick="openmenu()"
+                id="menuToggle"
+                role="button"
+                tabindex="0"
+                aria-label="Open navigation menu"
+                aria-controls="sidemenu"
+                aria-expanded="false"
             ></i>
 
         </nav>
@@ -102,7 +195,10 @@
              HERO
         ================================================== -->
 
-        <div class="header-text" id="home">
+        <div
+            class="header-text"
+            id="home"
+        >
 
             <h1 id="user-detail-name">
 
@@ -110,7 +206,9 @@
 
                 <br>
 
-                <span>ABHISHEK NIRAJ</span>
+                <span>
+                    ABHISHEK NIRAJ
+                </span>
 
             </h1>
 
@@ -143,8 +241,11 @@
                     rel="noopener noreferrer"
                     aria-label="GitHub"
                 >
+
                     <i class="bx bxl-github"></i>
+
                 </a>
+
 
                 <a
                     href="https://www.linkedin.com/in/abhishekniraj802/"
@@ -152,7 +253,9 @@
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                 >
+
                     <i class="bx bxl-linkedin-square"></i>
+
                 </a>
 
             </div>
@@ -167,16 +270,23 @@
                     class="primary-btn"
                     download
                 >
+
                     <i class="fa-solid fa-download"></i>
+
                     Download CV
+
                 </a>
+
 
                 <a
                     href="#projects"
                     class="secondary-btn"
                 >
+
                     View Projects
+
                     <i class="fa-solid fa-arrow-down"></i>
+
                 </a>
 
             </div>
@@ -192,13 +302,18 @@
      ABOUT
 ====================================================== -->
 
-<section id="about" class="about section">
+<section
+    id="about"
+    class="about section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>PROFILE</span>
+            <span>
+                PROFILE
+            </span>
 
             <h1>
                 About Me
@@ -219,7 +334,10 @@
                         src="./assets/NirajPhoto.jpg"
                         alt="Abhishek Niraj"
                         class="home-img"
+                        loading="lazy"
+                        decoding="async"
                     >
+
 
                     <div class="profile-card-info">
 
@@ -249,6 +367,7 @@
 
                 </p>
 
+
                 <p class="about-summary">
 
                     Currently contributing to an enterprise healthcare data platform focused on Informatica-to-Databricks migration, developing PySpark-based data transformation workflows and SQL solutions across large-scale datasets. Hands-on experience with Medallion Architecture, Delta Lake, incremental and full-load processing, data pipeline optimization and production-ready cloud data engineering.
@@ -263,15 +382,18 @@
                         <span>Azure Databricks</span>
                     </div>
 
+
                     <div>
                         <i class="fa-solid fa-bolt"></i>
                         <span>PySpark</span>
                     </div>
 
+
                     <div>
                         <i class="fa-solid fa-code"></i>
                         <span>SQL</span>
                     </div>
+
 
                     <div>
                         <i class="fa-solid fa-cloud"></i>
@@ -289,6 +411,7 @@
                     >
                         Education
                     </p>
+
 
                     <p
                         class="tab-links"
@@ -404,13 +527,18 @@
      SKILLS
 ====================================================== -->
 
-<section id="skills" class="skills section">
+<section
+    id="skills"
+    class="skills section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>TECHNICAL STACK</span>
+            <span>
+                TECHNICAL STACK
+            </span>
 
             <h1>
                 Skills & Tools
@@ -428,6 +556,7 @@
                 <div class="category-icon">
                     <i class="fa-solid fa-database"></i>
                 </div>
+
 
                 <div>
 
@@ -457,14 +586,21 @@
                             src="./assets/azure-databricks.svg"
                             alt="Azure Databricks"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Azure Databricks</h3>
-                        <span>Data Engineering</span>
+                        <h3>
+                            Azure Databricks
+                        </h3>
+
+                        <span>
+                            Data Engineering
+                        </span>
 
                     </div>
 
@@ -481,14 +617,21 @@
                             src="./assets/pyspark.svg"
                             alt="PySpark"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>PySpark</h3>
-                        <span>Big Data Processing</span>
+                        <h3>
+                            PySpark
+                        </h3>
+
+                        <span>
+                            Big Data Processing
+                        </span>
 
                     </div>
 
@@ -505,14 +648,21 @@
                             src="./assets/apache-spark.svg"
                             alt="Apache Spark"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Apache Spark</h3>
-                        <span>Distributed Computing</span>
+                        <h3>
+                            Apache Spark
+                        </h3>
+
+                        <span>
+                            Distributed Computing
+                        </span>
 
                     </div>
 
@@ -529,14 +679,21 @@
                             src="./assets/delta-lake.svg"
                             alt="Delta Lake"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Delta Lake</h3>
-                        <span>Lakehouse Storage</span>
+                        <h3>
+                            Delta Lake
+                        </h3>
+
+                        <span>
+                            Lakehouse Storage
+                        </span>
 
                     </div>
 
@@ -553,14 +710,21 @@
                             src="./assets/azure-data-factory.svg"
                             alt="Azure Data Factory"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Azure Data Factory</h3>
-                        <span>Data Orchestration</span>
+                        <h3>
+                            Azure Data Factory
+                        </h3>
+
+                        <span>
+                            Data Orchestration
+                        </span>
 
                     </div>
 
@@ -577,14 +741,21 @@
                             src="./assets/adls-gen2.svg"
                             alt="ADLS Gen2"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>ADLS Gen2</h3>
-                        <span>Cloud Storage</span>
+                        <h3>
+                            ADLS Gen2
+                        </h3>
+
+                        <span>
+                            Cloud Storage
+                        </span>
 
                     </div>
 
@@ -601,14 +772,21 @@
                             src="./assets/microsoft-azure.svg"
                             alt="Microsoft Azure"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Microsoft Azure</h3>
-                        <span>Cloud Platform</span>
+                        <h3>
+                            Microsoft Azure
+                        </h3>
+
+                        <span>
+                            Cloud Platform
+                        </span>
 
                     </div>
 
@@ -625,14 +803,21 @@
                             src="./assets/unity-catalog.svg"
                             alt="Unity Catalog"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Unity Catalog</h3>
-                        <span>Data Governance</span>
+                        <h3>
+                            Unity Catalog
+                        </h3>
+
+                        <span>
+                            Data Governance
+                        </span>
 
                     </div>
 
@@ -649,14 +834,21 @@
                             src="./assets/informatica.svg"
                             alt="Informatica"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Informatica</h3>
-                        <span>ETL & Migration</span>
+                        <h3>
+                            Informatica
+                        </h3>
+
+                        <span>
+                            ETL & Migration
+                        </span>
 
                     </div>
 
@@ -673,14 +865,21 @@
                             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg"
                             alt="Azure DevOps"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Azure DevOps</h3>
-                        <span>CI/CD & Pipeline</span>
+                        <h3>
+                            Azure DevOps
+                        </h3>
+
+                        <span>
+                            CI/CD & Pipeline
+                        </span>
 
                     </div>
 
@@ -697,14 +896,21 @@
                             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
                             alt="Python"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>Python</h3>
-                        <span>Programming Language</span>
+                        <h3>
+                            Python
+                        </h3>
+
+                        <span>
+                            Programming Language
+                        </span>
 
                     </div>
 
@@ -721,14 +927,21 @@
                             src="https://cdn.pixabay.com/photo/2020/03/17/17/46/database-4941338_1280.png"
                             alt="SQL"
                             class="de-skill-icon"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
 
                     <div class="de-skill-info">
 
-                        <h3>SQL</h3>
-                        <span>Database Query</span>
+                        <h3>
+                            SQL
+                        </h3>
+
+                        <span>
+                            Database Query
+                        </span>
 
                     </div>
 
@@ -750,76 +963,94 @@
                     <i class="fa-solid fa-code"></i>
                 </h2>
 
+
                 <div class="legacy-skills">
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/java-programming-language-icon.png"
                             alt="Java"
+                            loading="lazy"
                         >
                         <span>Java</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/spring1.png"
                             alt="Spring"
+                            loading="lazy"
                         >
                         <span>Spring</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/spring-boot.png"
                             alt="Spring Boot"
+                            loading="lazy"
                         >
                         <span>Spring Boot</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/mysql-icon.png"
                             alt="MySQL"
+                            loading="lazy"
                         >
                         <span>MySQL</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/html-icon.png"
                             alt="HTML"
+                            loading="lazy"
                         >
                         <span>HTML</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/css-icon.png"
                             alt="CSS"
+                            loading="lazy"
                         >
                         <span>CSS</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/javascript-programming-language-icon.png"
                             alt="JavaScript"
+                            loading="lazy"
                         >
                         <span>JavaScript</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/React.png"
                             alt="React"
+                            loading="lazy"
                         >
                         <span>React</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/C++.png"
                             alt="C++"
+                            loading="lazy"
                         >
                         <span>C++</span>
                     </div>
@@ -838,52 +1069,64 @@
                     <i class="fa-solid fa-code-branch"></i>
                 </h2>
 
+
                 <div class="legacy-skills">
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/github-icon.png"
                             alt="GitHub"
+                            loading="lazy"
                         >
                         <span>GitHub</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/visual-studio-code-icon.png"
                             alt="VS Code"
+                            loading="lazy"
                         >
                         <span>VS Code</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/eclipse-logo.png"
                             alt="Eclipse"
+                            loading="lazy"
                         >
                         <span>Eclipse</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/mysql_workbench.jpg.png"
                             alt="MySQL Workbench"
+                            loading="lazy"
                         >
                         <span>MySQL Workbench</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/postman-icon.png"
                             alt="Postman"
+                            loading="lazy"
                         >
                         <span>Postman</span>
                     </div>
+
 
                     <div class="legacy-skill">
                         <img
                             src="./assets/intelliJ.jpg"
                             alt="IntelliJ IDEA"
+                            loading="lazy"
                         >
                         <span>IntelliJ IDEA</span>
                     </div>
@@ -903,13 +1146,18 @@
      DATA ENGINEERING PROJECTS
 ====================================================== -->
 
-<section id="projects" class="projects section">
+<section
+    id="projects"
+    class="projects section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>PORTFOLIO</span>
+            <span>
+                PORTFOLIO
+            </span>
 
             <h1>
                 Data Engineering Projects
@@ -932,6 +1180,7 @@
                         alt="UHG 3RDD Optum Data Platform"
                         class="project-image"
                         loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="project-image-overlay">
@@ -1022,6 +1271,7 @@
                         alt="Cencora Enterprise Data Migration"
                         class="project-image"
                         loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="project-image-overlay">
@@ -1102,6 +1352,7 @@
                         alt="Spotify Music Trends Data Engineering Project"
                         class="project-image"
                         loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="project-image-overlay">
@@ -1174,13 +1425,18 @@
      OTHER PROJECTS
 ====================================================== -->
 
-<section id="other-projects" class="other-projects section">
+<section
+    id="other-projects"
+    class="other-projects section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>ADDITIONAL WORK</span>
+            <span>
+                ADDITIONAL WORK
+            </span>
 
             <h1>
                 Other Projects
@@ -1200,6 +1456,7 @@
                     src="./assets/job-portal.jpg"
                     alt="Job Portal Application"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1240,6 +1497,7 @@
                     src="./assets/diabetes.jpg"
                     alt="Diabetes Prediction Machine Learning Project"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1280,6 +1538,7 @@
                     src="./assets/track.png"
                     alt="Expense Tracker"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1319,6 +1578,7 @@
                     src="./assets/Online-Certification.jpg"
                     alt="Online Certificate Management System"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1359,6 +1619,7 @@
                     src="./assets/images.png"
                     alt="Criminal Identification System"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1399,6 +1660,7 @@
                     src="./assets/E Notes.png"
                     alt="E Notes Application"
                     loading="lazy"
+                    decoding="async"
                 >
 
                 <div class="other-project-content">
@@ -1440,13 +1702,18 @@
      CERTIFICATIONS
 ====================================================== -->
 
-<section id="certifications" class="certifications section">
+<section
+    id="certifications"
+    class="certifications section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>CREDENTIALS</span>
+            <span>
+                CREDENTIALS
+            </span>
 
             <h1>
                 Certifications
@@ -1632,13 +1899,18 @@
      CONTACT
 ====================================================== -->
 
-<section id="contact" class="contact section">
+<section
+    id="contact"
+    class="contact section"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span>GET IN TOUCH</span>
+            <span>
+                GET IN TOUCH
+            </span>
 
             <h1>
                 Contact Me
@@ -1693,14 +1965,17 @@
                             href="https://github.com/abhishekniraj802"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="GitHub"
                         >
                             <i class="fab fa-github"></i>
                         </a>
+
 
                         <a
                             href="https://www.linkedin.com/in/abhishekniraj802/"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="LinkedIn"
                         >
                             <i class="fab fa-linkedin"></i>
                         </a>
@@ -1721,16 +1996,20 @@
                         id="name"
                         name="name"
                         placeholder="Your Name"
+                        autocomplete="name"
                         required
                     >
+
 
                     <input
                         type="email"
                         id="email"
                         name="email"
                         placeholder="Your Email"
+                        autocomplete="email"
                         required
                     >
+
 
                     <textarea
                         id="message"
@@ -1740,9 +2019,15 @@
                         required
                     ></textarea>
 
-                    <button type="submit">
 
-                        Send Message
+                    <button
+                        type="submit"
+                        id="contactSubmitBtn"
+                    >
+
+                        <span>
+                            Send Message
+                        </span>
 
                         <i class="fa-solid fa-paper-plane"></i>
 
@@ -1750,9 +2035,11 @@
 
                 </form>
 
+
                 <p
                     id="statusMessage"
                     class="status-message"
+                    aria-live="polite"
                 ></p>
 
             </div>
@@ -1775,6 +2062,7 @@
         <p>
             © 2026 Abhishek Niraj
         </p>
+
 
         <div>
 
@@ -1800,6 +2088,7 @@
 <button
     id="scrollToTopBtn"
     class="scroll-to-top"
+    aria-label="Scroll to top"
 >
 
     <i class="fa-solid fa-arrow-up"></i>
@@ -1815,9 +2104,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-<!-- Main JS -->
+
+<!-- MAIN JS -->
 
 <script src="./app.js"></script>
 
 </body>
+
 </html>
