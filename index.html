@@ -1,520 +1,1621 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Abhishek Niraj - Data Engineer specializing in Azure Databricks, PySpark, SQL, Azure Data Factory and modern cloud data platforms.">
+        content="Abhishek Niraj - Data Engineer specializing in Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake and enterprise data migration.">
 
     <meta name="keywords"
-        content="Data Engineer, Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS Gen2, Delta Lake, Data Engineering, Azure DevOps">
+        content="Data Engineer, Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS, Delta Lake, Apache Spark, Informatica">
 
     <meta name="author" content="Abhishek Niraj">
 
     <title>Abhishek Niraj | Data Engineer</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/titleimg.jpg" type="image/jpeg">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVIGATION / HERO
+====================================================== -->
 
-    <header id="header">
+<header id="header">
 
-        <div class="container">
+    <div class="container">
 
-            <nav>
+        <nav>
 
-                <div class="logo">
-                    <span>AN</span>
-                </div>
+            <img
+                src="./assets/icon.png"
+                alt="Abhishek Niraj Logo"
+                class="logo"
+            >
 
-                <ul id="sidemenu">
+            <ul id="sidemenu">
 
-                    <li>
-                        <a href="#header">Home</a>
-                    </li>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
 
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
 
-                    <li>
-                        <a href="#skills">Skills</a>
-                    </li>
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
 
-                    <li>
-                        <a href="#experience">Experience</a>
-                    </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
 
-                    <li>
-                        <a href="#projects">Projects</a>
-                    </li>
+                <li>
+                    <a href="#certifications">Certifications</a>
+                </li>
 
-                    <li>
-                        <a href="#certifications">Certifications</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-
-                    <i class="fa-solid fa-xmark close-menu" onclick="closemenu()"></i>
-
-                </ul>
-
-                <i class="fa-solid fa-bars open-menu" onclick="openmenu()"></i>
-
-            </nav>
-
-            <!-- ================= HERO ================= -->
-
-            <div class="hero-content">
-
-                <div class="hero-badge reveal">
-                    <span class="status-dot"></span>
-                    Open to Data Engineering Opportunities
-                </div>
-
-                <p class="hello reveal">
-                    Hello, I am
-                </p>
-
-                <h1 class="hero-title reveal">
-
-                    <span class="gradient-text">
-                        Data Engineer
-                    </span>
-
-                </h1>
-
-                <div class="hero-summary">
-
-                    <h2 class="animated-line">
-                        Data Engineer specializing in
-                        <span>Azure Databricks, PySpark & SQL</span>
-                    </h2>
-
-                    <p class="animated-description">
-                        Building scalable, reliable data pipelines and cloud data
-                        platforms using <strong>Databricks, Azure Data Factory,
-                        ADLS Gen2, Delta Lake & Medallion Architecture.</strong>
-                    </p>
-
-                    <p class="animated-description delay">
-                        Experienced in <strong>enterprise data migration,
-                        ETL modernization, data quality, and production-grade
-                        pipeline validation.</strong>
-                    </p>
-
-                </div>
-
-                <div class="hero-buttons reveal">
-
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fa-solid fa-code"></i>
-                        View Projects
+                <li>
+                    <a
+                        href="./assets/Abhishek_Data_Engg.pdf"
+                        download
+                    >
+                        Resume
                     </a>
+                </li>
 
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fa-regular fa-paper-plane"></i>
-                        Contact Me
-                    </a>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
 
-                </div>
+                <i
+                    class="fa-solid fa-xmark menu-close"
+                    onclick="closemenu()"
+                ></i>
 
-                <div class="hero-socials reveal">
+            </ul>
 
-                    <a href="https://github.com/" target="_blank" aria-label="GitHub">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
+            <i
+                class="fa-solid fa-bars menu-open"
+                onclick="openmenu()"
+            ></i>
 
-                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="mailto:your-email@example.com" aria-label="Email">
-                        <i class="fa-regular fa-envelope"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
+        </nav>
 
 
-    <!-- ================= ABOUT ================= -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-    <section id="about">
+        <div class="header-text" id="home">
 
-        <div class="container">
+            <h1 id="user-detail-name">
 
-            <div class="section-heading">
+                Hello, I'm
 
-                <span class="section-number">01</span>
+                <br>
 
-                <div>
-                    <p class="section-label">PROFILE</p>
-                    <h2>About Me</h2>
-                </div>
+                <span>ABHISHEK NIRAJ</span>
 
-            </div>
-
-            <div class="about-grid">
-
-                <div class="about-image">
-
-                    <div class="profile-card">
-
-                        <div class="profile-icon">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-
-                        <h3>Data Engineering</h3>
-
-                        <p>
-                            Building reliable and scalable data solutions
-                            across cloud and big-data platforms.
-                        </p>
-
-                        <div class="profile-tags">
-                            <span>Azure</span>
-                            <span>Databricks</span>
-                            <span>PySpark</span>
-                            <span>SQL</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="about-content">
-
-                    <h3>
-                        Turning enterprise data into
-                        <span>reliable data platforms.</span>
-                    </h3>
-
-                    <p>
-                        I am a Data Engineer focused on designing, validating and
-                        modernizing cloud-based data pipelines using Azure
-                        Databricks, PySpark, SQL and Azure Data Factory.
-                    </p>
-
-                    <p>
-                        My experience includes enterprise data migration,
-                        ETL modernization, Delta Lake, Medallion Architecture,
-                        data quality validation, pipeline testing and production
-                        support.
-                    </p>
-
-                    <div class="about-highlights">
-
-                        <div>
-                            <i class="fa-solid fa-cloud"></i>
-                            <span>Cloud Data Engineering</span>
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-database"></i>
-                            <span>Data Migration</span>
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-gears"></i>
-                            <span>ETL Modernization</span>
-                        </div>
-
-                        <div>
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>Data Quality</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+            </h1>
 
 
-    <!-- ================= SKILLS ================= -->
+            <!-- JOB TITLE TYPING -->
 
-    <section id="skills">
+            <p class="hero-title">
 
-        <div class="container">
+                <span class="auto-type"></span>
 
-            <div class="section-heading">
-
-                <span class="section-number">02</span>
-
-                <div>
-                    <p class="section-label">TECH STACK</p>
-                    <h2>Data Engineering Skills</h2>
-                </div>
-
-            </div>
-
-            <p class="section-description">
-                A practical technology stack focused on building scalable,
-                reliable and production-ready cloud data pipelines.
             </p>
 
 
-            <!-- Main Skills Image -->
+            <!-- DESCRIPTION TYPING -->
 
-            <div class="skills-image-card">
+            <p class="hero-description">
 
-                <img src="assets/data-engineering-skills.jpg"
-                    alt="Data Engineering Skills">
+                <span class="hero-description-type"></span>
 
-                <div class="image-overlay">
+            </p>
 
-                    <span>
+
+            <!-- SOCIAL ICONS -->
+
+            <div class="box-icons">
+
+                <a
+                    href="https://github.com/abhishekniraj802"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                >
+                    <i class="bx bxl-github"></i>
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/abhishekniraj802/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+
+            </div>
+
+
+            <!-- HERO BUTTONS -->
+
+            <div class="hero-buttons">
+
+                <a
+                    href="./assets/Abhishek_Data_Engg.pdf"
+                    class="primary-btn"
+                    download
+                >
+                    <i class="fa-solid fa-download"></i>
+                    Download CV
+                </a>
+
+                <a
+                    href="#projects"
+                    class="secondary-btn"
+                >
+                    View Projects
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     ABOUT
+====================================================== -->
+
+<section id="about" class="about section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>PROFILE</span>
+
+            <h1>
+                About Me
+            </h1>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-col-1">
+
+                <div class="profile-card">
+
+                    <div class="profile-glow"></div>
+
+                    <img
+                        src="./assets/NirajPhoto.jpg"
+                        alt="Abhishek Niraj"
+                        class="home-img"
+                    >
+
+                    <div class="profile-card-info">
+
+                        <strong>
+                            Abhishek Niraj
+                        </strong>
+
+                        <span>
+                            Data Engineer
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="about-col-2"
+                id="user-detail-intro"
+            >
+
+                <p class="about-summary">
+
+                    Data Engineer with 1.5+ years of hands-on experience developing scalable cloud data solutions using Azure Databricks, PySpark, SQL, Azure Data Factory, ADLS Gen2 and Delta Lake. Experienced in designing and developing data pipelines, implementing ETL workflows, transforming large-scale datasets and supporting enterprise data migration and ETL modernization initiatives.
+
+                </p>
+
+                <p class="about-summary">
+
+                    Currently contributing to an enterprise healthcare data platform focused on Informatica-to-Databricks migration, developing PySpark-based data transformation workflows and SQL solutions across large-scale datasets. Hands-on experience with Medallion Architecture, Delta Lake, incremental and full-load processing, data pipeline optimization and production-ready cloud data engineering.
+
+                </p>
+
+
+                <div class="about-highlights">
+
+                    <div>
                         <i class="fa-solid fa-database"></i>
-                        Data Engineering
-                    </span>
+                        <span>Azure Databricks</span>
+                    </div>
 
-                    <span>
-                        <i class="fa-solid fa-cloud"></i>
-                        Azure
-                    </span>
-
-                    <span>
+                    <div>
                         <i class="fa-solid fa-bolt"></i>
+                        <span>PySpark</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-code"></i>
+                        <span>SQL</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-cloud"></i>
+                        <span>Azure</span>
+                    </div>
+
+                </div>
+
+
+                <div class="tab-titles">
+
+                    <p
+                        class="tab-links active-link"
+                        onclick="opentab('education')"
+                    >
+                        Education
+                    </p>
+
+                    <p
+                        class="tab-links"
+                        onclick="opentab('experience')"
+                    >
+                        Experience
+                    </p>
+
+                </div>
+
+
+                <!-- EDUCATION -->
+
+                <div
+                    class="tab-contents active-tab"
+                    id="education"
+                >
+
+                    <ul>
+
+                        <li>
+
+                            <span>
+                                Bachelor of Engineering — CSE
+                            </span>
+
+                            <br>
+
+                            Sathyabama Institute of Science and Technology,
+                            Chennai
+
+                            <br>
+
+                            <em>
+                                September 2020 – May 2024
+                            </em>
+
+                            <strong>
+                                CGPA: 8.54
+                            </strong>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div
+                    class="tab-contents"
+                    id="experience"
+                >
+
+                    <ul>
+
+                        <li>
+
+                            <span>
+                                Software Engineer — Data Engineering
+                            </span>
+
+                            <br>
+
+                            Persistent Systems Ltd.
+
+                            <br>
+
+                            <em>
+                                March 2026 – Present
+                            </em>
+
+                            <br>
+
+                            UHG 3RDD — Informatica to Databricks Migration
+
+                        </li>
+
+
+                        <li>
+
+                            <span>
+                                Trainee Software Engineer
+                            </span>
+
+                            <br>
+
+                            Revature Consultancy Pvt. Ltd.
+
+                            <br>
+
+                            <em>
+                                March 2025 – May 2025
+                            </em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SKILLS
+====================================================== -->
+
+<section id="skills" class="skills section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>TECHNICAL STACK</span>
+
+            <h1>
+                Skills & Tools
+            </h1>
+
+        </div>
+
+
+        <!-- DATA ENGINEERING -->
+
+        <div class="data-engineering-category">
+
+            <div class="skill-category-header">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <div>
+
+                    <h2>
+                        Data Engineering
+                    </h2>
+
+                    <p>
+                        Cloud Data Platform & Big Data Technologies
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="data-engineering-grid">
+
+
+                <!-- Azure Databricks -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/azure-databricks.svg"
+                            alt="Azure Databricks"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Azure Databricks</h3>
+                        <span>Data Engineering</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PySpark -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/pyspark.svg"
+                            alt="PySpark"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>PySpark</h3>
+                        <span>Big Data Processing</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Apache Spark -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/apache-spark.svg"
+                            alt="Apache Spark"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Apache Spark</h3>
+                        <span>Distributed Computing</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Delta Lake -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/delta-lake.svg"
+                            alt="Delta Lake"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Delta Lake</h3>
+                        <span>Lakehouse Storage</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Azure Data Factory -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/azure-data-factory.svg"
+                            alt="Azure Data Factory"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Azure Data Factory</h3>
+                        <span>Data Orchestration</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADLS Gen2 -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/adls-gen2.svg"
+                            alt="ADLS Gen2"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>ADLS Gen2</h3>
+                        <span>Cloud Storage</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Microsoft Azure -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/microsoft-azure.svg"
+                            alt="Microsoft Azure"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Microsoft Azure</h3>
+                        <span>Cloud Platform</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Unity Catalog -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/unity-catalog.svg"
+                            alt="Unity Catalog"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Unity Catalog</h3>
+                        <span>Data Governance</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Informatica -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="./assets/informatica.svg"
+                            alt="Informatica"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Informatica</h3>
+                        <span>ETL & Migration</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Azure DevOps -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg"
+                            alt="Azure DevOps"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Azure DevOps</h3>
+                        <span>CI/CD & Pipeline</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Python -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                            alt="Python"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>Python</h3>
+                        <span>Programming Language</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SQL -->
+
+                <div class="de-skill-card">
+
+                    <div class="de-icon-wrapper">
+
+                        <img
+                            src="https://cdn.pixabay.com/photo/2020/03/17/17/46/database-4941338_1280.png"
+                            alt="SQL"
+                            class="de-skill-icon"
+                        >
+
+                    </div>
+
+                    <div class="de-skill-info">
+
+                        <h3>SQL</h3>
+                        <span>Database Query</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LANGUAGES & FRAMEWORKS -->
+
+        <div class="legacy-skills-grid">
+
+            <div class="legacy-skill-box">
+
+                <h2>
+                    Languages & Frameworks
+                    <i class="fa-solid fa-code"></i>
+                </h2>
+
+                <div class="legacy-skills">
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/java-programming-language-icon.png"
+                            alt="Java"
+                        >
+                        <span>Java</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/spring1.png"
+                            alt="Spring"
+                        >
+                        <span>Spring</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/spring-boot.png"
+                            alt="Spring Boot"
+                        >
+                        <span>Spring Boot</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/mysql-icon.png"
+                            alt="MySQL"
+                        >
+                        <span>MySQL</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/html-icon.png"
+                            alt="HTML"
+                        >
+                        <span>HTML</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/css-icon.png"
+                            alt="CSS"
+                        >
+                        <span>CSS</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/javascript-programming-language-icon.png"
+                            alt="JavaScript"
+                        >
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/React.png"
+                            alt="React"
+                        >
+                        <span>React</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/C++.png"
+                            alt="C++"
+                        >
+                        <span>C++</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DEVELOPER TOOLS -->
+
+            <div class="legacy-skill-box">
+
+                <h2>
+                    Developer Tools
+                    <i class="fa-solid fa-code-branch"></i>
+                </h2>
+
+                <div class="legacy-skills">
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/github-icon.png"
+                            alt="GitHub"
+                        >
+                        <span>GitHub</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/visual-studio-code-icon.png"
+                            alt="VS Code"
+                        >
+                        <span>VS Code</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/eclipse-logo.png"
+                            alt="Eclipse"
+                        >
+                        <span>Eclipse</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/mysql_workbench.jpg.png"
+                            alt="MySQL Workbench"
+                        >
+                        <span>MySQL Workbench</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/postman-icon.png"
+                            alt="Postman"
+                        >
+                        <span>Postman</span>
+                    </div>
+
+                    <div class="legacy-skill">
+                        <img
+                            src="./assets/intelliJ.jpg"
+                            alt="IntelliJ IDEA"
+                        >
+                        <span>IntelliJ IDEA</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DATA ENGINEERING PROJECTS
+====================================================== -->
+
+<section id="projects" class="projects section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>PORTFOLIO</span>
+
+            <h1>
+                Data Engineering Projects
+            </h1>
+
+        </div>
+
+
+        <div class="all-projects">
+
+
+            <!-- UHG 3RDD -->
+
+            <article class="project-card featured-project">
+
+                <div class="project-image-wrapper">
+
+                    <img
+                        src="./assets/databricks-project.jpg"
+                        alt="UHG 3RDD Optum Data Platform"
+                        class="project-image"
+                        loading="lazy"
+                    >
+
+                    <div class="project-image-overlay">
+                        <span>
+                            Azure Databricks
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <h2 class="project-title">
+                        UHG 3RDD — Optum Data Platform
+                    </h2>
+
+                    <div class="project-domain">
+                        Healthcare / Insurance
+                    </div>
+
+                    <p>
+                        Contributing to an enterprise healthcare data
+                        platform focused on migrating Informatica ETL
+                        workflows to Azure Databricks.
+                    </p>
+
+                    <p>
+                        Developed a reusable PySpark validation framework
+                        spanning DDL checks, row-count reconciliation,
+                        E2E SUBTRACT, column-level drill-down,
+                        deduplication, and XML source-to-target
+                        validation, cutting framework build time from
+                        weeks to days.
+                    </p>
+
+                    <p>
+                        Designed and optimized 38+ Databricks notebooks
+                        for automated validation across 90+ healthcare and
+                        insurance tables, including XML inbound checks,
+                        improving consistency and accelerating SIT/UAT
+                        delivery.
+                    </p>
+
+                    <p>
+                        Implemented Oracle-to-Databricks reconciliation
+                        logic using incremental timestamp filtering,
+                        batch-level deduplication, and tolerance-based
+                        comparisons to validate large-volume datasets at
+                        scale.
+                    </p>
+
+                    <p>
+                        Performed PySpark/SQL root-cause analysis via
+                        joins, aggregations, and data profiling to resolve
+                        duplicate records, transformation mismatches, and
+                        source-to-target discrepancies, contributing to
+                        zero escalations.
+                    </p>
+
+                    <div class="project-tech-stack">
+
+                        <span>Azure Databricks</span>
+                        <span>PySpark</span>
+                        <span>Delta Lake</span>
+                        <span>SQL</span>
+                        <span>Informatica</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- CENCORA -->
+
+            <article class="project-card">
+
+                <div class="project-image-wrapper">
+
+                    <img
+                        src="./assets/cencora-databricks.jpg"
+                        alt="Cencora Enterprise Data Migration"
+                        class="project-image"
+                        loading="lazy"
+                    >
+
+                    <div class="project-image-overlay">
+                        <span>
+                            Data Migration
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <h2 class="project-title">
+                        Cencora — Enterprise Data Migration
+                    </h2>
+
+                    <div class="project-domain">
+                        Healthcare / Pharma
+                    </div>
+
+                    <p>
+                        Worked on an enterprise-scale migration to Azure
+                        Databricks, supporting Raw Ingestion, Reporting,
+                        and Standardized Views PODs with end-to-end
+                        source-to-target validation.
+                    </p>
+
+                    <p>
+                        Contributed to Medallion Architecture (Bronze →
+                        Silver → Gold → Standardized) implementation,
+                        adding schema enforcement and automated
+                        consistency checks for production-grade data
+                        quality.
+                    </p>
+
+                    <p>
+                        Deployed an ICEDQ-based data quality framework
+                        (count, null, duplicate, PK checks), reducing
+                        pipeline failure rate by 30%.
+                    </p>
+
+                    <p>
+                        Designed incremental/full-load pipelines with
+                        checkpointing and audit logging; optimized Delta
+                        Lake partitioning to improve downstream query
+                        performance.
+                    </p>
+
+                    <div class="project-tech-stack">
+
+                        <span>Azure Databricks</span>
+                        <span>PySpark</span>
+                        <span>Azure Data Factory</span>
+                        <span>ADLS</span>
+                        <span>SQL</span>
+                        <span>Azure DevOps</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SPOTIFY -->
+
+            <article class="project-card">
+
+                <div class="project-image-wrapper">
+
+                    <img
+                        src="./assets/spotify-databricks.jpg"
+                        alt="Spotify Music Trends Data Engineering Project"
+                        class="project-image"
+                        loading="lazy"
+                    >
+
+                    <div class="project-image-overlay">
+                        <span>
+                            Cloud Data Pipeline
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <h2 class="project-title">
+                        Spotify Music Trends
+                    </h2>
+
+                    <div class="project-domain">
+                        Data Engineering / Analytics
+                    </div>
+
+                    <p>
+                        Built ADF-based ingestion pipelines to extract
+                        playlist and track metadata from Spotify REST APIs,
+                        processing large-scale music datasets across 50+
+                        genres and regions.
+                    </p>
+
+                    <p>
+                        Designed a 3-tier ADLS data lake (Raw → Clean →
+                        Curated) and developed PySpark transformation
+                        jobs in Azure Databricks to detect listener
+                        behavior trends and music consumption patterns.
+                    </p>
+
+                    <p>
+                        Implemented Unity Catalog for data governance and
+                        enforced Entra ID-based RBAC, ensuring secure,
+                        role-specific access across the entire data
+                        pipeline.
+                    </p>
+
+                    <div class="project-tech-stack">
+
+                        <span>Azure Data Factory</span>
+                        <span>Azure Databricks</span>
+                        <span>PySpark</span>
+                        <span>ADLS</span>
+                        <span>Unity Catalog</span>
+                        <span>Entra ID</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OTHER PROJECTS
+====================================================== -->
+
+<section id="other-projects" class="other-projects section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>ADDITIONAL WORK</span>
+
+            <h1>
+                Other Projects
+            </h1>
+
+        </div>
+
+
+        <div class="other-project-grid">
+
+
+            <!-- JOB PORTAL -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/job-portal.jpg"
+                    alt="Job Portal Application"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        Job Portal Application
+                    </h2>
+
+                    <a
+                        href="https://github.com/abhishekniraj802/Job-Portal-Application"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Developed a job portal using Java, JSP and
+                        Servlets with user registration, profile
+                        management and job listing functionality.
+                    </p>
+
+                    <small>
+                        Java • JDBC • Servlet • JSP • PostgreSQL
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- DIABETES -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/diabetes.jpg"
+                    alt="Diabetes Prediction Machine Learning Project"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        Diabetes Prediction Using Machine Learning
+                    </h2>
+
+                    <a
+                        href="https://github.com/abhishekniraj802/Diabetes-Prediction-final-year-project"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Developed a machine learning model for diabetes
+                        prediction and compared multiple classification
+                        algorithms.
+                    </p>
+
+                    <small>
+                        Python • Flask • Machine Learning • HTML/CSS
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- EXPENSE TRACKER -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/track.png"
+                    alt="Expense Tracker"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        Expense Tracker
+                    </h2>
+
+                    <a
+                        href="https://github.com/abhishekniraj802/Expenses-Tracker"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Built an expense management application with
+                        authentication, CRUD operations and filtering.
+                    </p>
+
+                    <small>
+                        Spring Boot • Spring Security • JPA • MySQL • JavaScript
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- ONLINE CERTIFICATE -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/Online-Certification.jpg"
+                    alt="Online Certificate Management System"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        Online Certificate Management System
+                    </h2>
+
+                    <a
+                        href="https://github.com/abhishekniraj802/Online-Certificate-Management-System"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Developed a certificate management application
+                        with role-based functionality, authentication
+                        and database integration.
+                    </p>
+
+                    <small>
+                        Spring Boot • React • JWT • MySQL
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- CRIMINAL IDENTIFICATION -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/images.png"
+                    alt="Criminal Identification System"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        Criminal Identification System
+                    </h2>
+
+                    <a
+                        href="https://github.com/abhishekniraj802/Criminal-Identification-System-Using-Photo-Matching-Across-Distributed-CCTV-Surveillance-Networks-"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Developed a photo-matching system using distributed
+                        CCTV surveillance data with a web-based monitoring
+                        and analysis interface.
+                    </p>
+
+                    <small>
+                        Python • OpenCV • Flask • Streamlit
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- E NOTES -->
+
+            <article class="other-project-card">
+
+                <img
+                    src="./assets/E Notes.png"
+                    alt="E Notes Application"
+                    loading="lazy"
+                >
+
+                <div class="other-project-content">
+
+                    <h2>
+                        E-Notes App
+                    </h2>
+
+                    <a
+                        href="https://e-notes-app.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Project
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <p>
+                        Developed a simple web application for creating,
+                        storing and retrieving text snippets across devices.
+                    </p>
+
+                    <small>
+                        HTML/CSS • React
+                    </small>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATIONS
+====================================================== -->
+
+<section id="certifications" class="certifications section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>CREDENTIALS</span>
+
+            <h1>
+                Certifications
+            </h1>
+
+        </div>
+
+
+        <div class="certification-grid">
+
+
+            <!-- DATABRICKS PROFESSIONAL -->
+
+            <div class="certification-card">
+
+                <div class="cert-icon databricks-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <div>
+
+                    <span class="cert-provider">
                         Databricks
                     </span>
 
+                    <h2>
+                        Databricks Certified
+                        Data Engineer Professional
+                    </h2>
+
+                    <a
+                        href="https://credentials.databricks.com/5c6f541f-4bd3-4859-9bbf-55b83b97868b#acc.JBSz1Ue5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Credential
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+
                 </div>
 
             </div>
 
 
-            <!-- Interactive Skill Cards -->
+            <!-- DATABRICKS ASSOCIATE -->
 
-            <div class="skills-grid">
+            <div class="certification-card">
 
+                <div class="cert-icon databricks-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
 
-                <!-- CORE -->
+                <div>
 
-                <div class="skill-card">
+                    <span class="cert-provider">
+                        Databricks
+                    </span>
 
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
+                    <h2>
+                        Databricks Certified
+                        Data Engineer Associate
+                    </h2>
 
-                    <h3>Core Data Engineering</h3>
-
-                    <p>
-                        Languages and distributed processing technologies
-                        used for scalable data workloads.
-                    </p>
-
-                    <div class="skill-tags">
-
-                        <span title="Python">
-                            Python
-                        </span>
-
-                        <span title="SQL">
-                            SQL
-                        </span>
-
-                        <span title="PySpark">
-                            PySpark
-                        </span>
-
-                        <span title="Apache Spark">
-                            Apache Spark
-                        </span>
-
-                    </div>
+                    <a
+                        href="https://credentials.databricks.com/b9de720e-fd1e-4574-9925-9246b490e709#acc.7Pk1HUnt"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Credential
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
 
                 </div>
 
+            </div>
 
-                <!-- AZURE -->
 
-                <div class="skill-card featured">
+            <!-- GOOGLE CLOUD -->
 
-                    <div class="skill-icon">
-                        <i class="fa-brands fa-microsoft"></i>
-                    </div>
+            <div class="certification-card">
 
-                    <h3>Azure & Databricks</h3>
+                <div class="cert-icon google-icon">
+                    <i class="fa-brands fa-google"></i>
+                </div>
 
-                    <p>
-                        Cloud-native technologies for modern lakehouse
-                        and enterprise data platforms.
-                    </p>
+                <div>
 
-                    <div class="skill-tags">
+                    <span class="cert-provider">
+                        Google Cloud
+                    </span>
 
-                        <span>Azure Databricks</span>
+                    <h2>
+                        Google Cloud
+                        Generative AI Leader
+                    </h2>
 
-                        <span>Azure Data Factory</span>
-
-                        <span>ADLS Gen2</span>
-
-                        <span>Delta Lake</span>
-
-                        <span>Microsoft Azure</span>
-
-                        <span>Unity Catalog</span>
-
-                    </div>
+                    <a
+                        href="https://www.credly.com/badges/337b9984-78de-4637-9cc1-bd739d0b78a2/public_url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Credential
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
 
                 </div>
 
+            </div>
 
-                <!-- ARCHITECTURE -->
 
-                <div class="skill-card">
+            <!-- AWS -->
 
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
+            <div class="certification-card">
 
-                    <h3>Data Architecture</h3>
+                <div class="cert-icon aws-icon">
+                    <i class="fa-brands fa-aws"></i>
+                </div>
 
-                    <p>
-                        Architecture patterns for reliable ingestion,
-                        transformation and analytical workloads.
-                    </p>
+                <div>
 
-                    <div class="skill-tags">
+                    <span class="cert-provider">
+                        Amazon Web Services
+                    </span>
 
-                        <span>Medallion Architecture</span>
+                    <h2>
+                        AWS Certified AI Practitioner
+                    </h2>
 
-                        <span>Lakehouse Architecture</span>
-
-                        <span>ETL / ELT</span>
-
-                        <span>Batch Pipelines</span>
-
-                        <span>Incremental Loads</span>
-
-                    </div>
+                    <a
+                        href="https://www.credly.com/badges/b8196947-8568-43bd-9ebe-003c20d3a758/public_url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Credential
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
 
                 </div>
 
+            </div>
 
-                <!-- DATA QUALITY -->
 
-                <div class="skill-card">
+            <!-- AZURE AI -->
 
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
+            <div class="certification-card">
 
-                    <h3>Data Quality & Tools</h3>
-
-                    <p>
-                        Quality validation, version control and enterprise
-                        development tools.
-                    </p>
-
-                    <div class="skill-tags">
-
-                        <span>Informatica</span>
-
-                        <span>ICEDQ</span>
-
-                        <span>Git</span>
-
-                        <span>GitHub</span>
-
-                        <span>Azure DevOps</span>
-
-                        <span>VS Code</span>
-
-                    </div>
-
+                <div class="cert-icon azure-icon">
+                    <i class="fa-brands fa-microsoft"></i>
                 </div>
 
+                <div>
 
-                <!-- DATABASE -->
+                    <span class="cert-provider">
+                        Microsoft
+                    </span>
 
-                <div class="skill-card">
+                    <h2>
+                        Microsoft Azure AI Fundamentals
+                        (AI-900)
+                    </h2>
 
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-
-                    <h3>Databases</h3>
-
-                    <p>
-                        Relational and analytical databases used for
-                        application and data workloads.
-                    </p>
-
-                    <div class="skill-tags">
-
-                        <span>SQL Server</span>
-
-                        <span>MySQL</span>
-
-                        <span>PostgreSQL</span>
-
-                        <span>MongoDB</span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- PROGRAMMING -->
-
-                <div class="skill-card">
-
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-
-                    <h3>Programming</h3>
-
-                    <p>
-                        Additional development technologies and
-                        programming experience.
-                    </p>
-
-                    <div class="skill-tags">
-
-                        <span>Java</span>
-
-                        <span>C++</span>
-
-                        <span>JavaScript</span>
-
-                        <span>HTML</span>
-
-                        <span>CSS</span>
-
-                    </div>
+                    <a
+                        href="https://www.certiport.com/portal/pages/credentialverification.aspx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Credential
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
 
                 </div>
 
@@ -522,1006 +1623,201 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- ================= EXPERIENCE ================= -->
 
-    <section id="experience">
+<!-- =====================================================
+     CONTACT
+====================================================== -->
 
-        <div class="container">
+<section id="contact" class="contact section">
 
-            <div class="section-heading">
+    <div class="container">
 
-                <span class="section-number">03</span>
+        <div class="section-heading">
 
-                <div>
-                    <p class="section-label">CAREER</p>
-                    <h2>Experience</h2>
-                </div>
+            <span>GET IN TOUCH</span>
 
-            </div>
-
-
-            <div class="timeline">
-
-
-                <!-- CURRENT -->
-
-                <div class="timeline-item">
-
-                    <div class="timeline-dot"></div>
-
-                    <div class="timeline-card">
-
-                        <div class="timeline-header">
-
-                            <div>
-
-                                <h3>
-                                    Software Engineer — Data Engineering
-                                </h3>
-
-                                <h4>
-                                    Persistent Systems Limited
-                                </h4>
-
-                            </div>
-
-                            <span class="timeline-date">
-                                Mar 2026 – Present
-                            </span>
-
-                        </div>
-
-                        <p class="timeline-location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            Pune, India
-                        </p>
-
-                        <ul>
-
-                            <li>
-                                Working on the UHG-3RDD data platform for
-                                the Optum client, focused on modernizing
-                                enterprise healthcare data pipelines.
-                            </li>
-
-                            <li>
-                                Migrating legacy Informatica ETL workflows
-                                to Azure Databricks using PySpark and SQL.
-                            </li>
-
-                            <li>
-                                Validating Bronze, Silver, Gold and
-                                standardized data layers across
-                                Azure Databricks pipelines.
-                            </li>
-
-                            <li>
-                                Performing data quality, completeness,
-                                accuracy, duplicate, null, lineage and
-                                primary-key validations.
-                            </li>
-
-                            <li>
-                                Testing incremental and full-load pipelines,
-                                checkpointing, logging and error handling.
-                            </li>
-
-                        </ul>
-
-                        <div class="experience-tags">
-
-                            <span>Azure Databricks</span>
-                            <span>PySpark</span>
-                            <span>SQL</span>
-                            <span>ADF</span>
-                            <span>ADLS</span>
-                            <span>Delta Lake</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CENCORA -->
-
-                <div class="timeline-item">
-
-                    <div class="timeline-dot"></div>
-
-                    <div class="timeline-card">
-
-                        <div class="timeline-header">
-
-                            <div>
-
-                                <h3>
-                                    Data Engineering Consultant
-                                </h3>
-
-                                <h4>
-                                    Persistent Systems — Cencora Project
-                                </h4>
-
-                            </div>
-
-                            <span class="timeline-date">
-                                May 2025 – Feb 2026
-                            </span>
-
-                        </div>
-
-                        <p class="timeline-location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            Pune, India
-                        </p>
-
-                        <ul>
-
-                            <li>
-                                Worked on enterprise data migration from
-                                legacy platforms to Azure Databricks.
-                            </li>
-
-                            <li>
-                                Validated data ingestion and transformation
-                                pipelines across Raw, Core, Reporting and
-                                standardized layers.
-                            </li>
-
-                            <li>
-                                Performed source-to-target validation,
-                                record-count checks, null checks,
-                                duplicate checks and lineage validation.
-                            </li>
-
-                            <li>
-                                Tested Parquet and Delta-based datasets
-                                and supported production data-quality
-                                validation.
-                            </li>
-
-                        </ul>
-
-                        <div class="experience-tags">
-
-                            <span>Databricks</span>
-                            <span>PySpark</span>
-                            <span>ADF</span>
-                            <span>ADLS</span>
-                            <span>ICEDQ</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TRAINING -->
-
-                <div class="timeline-item">
-
-                    <div class="timeline-dot"></div>
-
-                    <div class="timeline-card">
-
-                        <div class="timeline-header">
-
-                            <div>
-
-                                <h3>
-                                    Data Engineering Trainee
-                                </h3>
-
-                                <h4>
-                                    Revature
-                                </h4>
-
-                            </div>
-
-                            <span class="timeline-date">
-                                Mar 2025 – May 2025
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Completed hands-on training in Azure
-                                Databricks, PySpark, Azure Data Factory
-                                and ADLS Gen2.
-                            </li>
-
-                            <li>
-                                Built a Spotify Music Trends data pipeline
-                                using Medallion Architecture and Delta Lake.
-                            </li>
-
-                        </ul>
-
-                        <div class="experience-tags">
-
-                            <span>Azure</span>
-                            <span>Databricks</span>
-                            <span>PySpark</span>
-                            <span>ADF</span>
-                            <span>Delta Lake</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <h1>
+                Contact Me
+            </h1>
 
         </div>
 
-    </section>
 
+        <div class="contact-grid">
 
-    <!-- ================= PROJECTS ================= -->
 
-    <section id="projects">
+            <div class="contact-left">
 
-        <div class="container">
+                <div class="contact-card">
 
-            <div class="section-heading">
-
-                <span class="section-number">04</span>
-
-                <div>
-                    <p class="section-label">WORK</p>
-                    <h2>Data Engineering Projects</h2>
-                </div>
-
-            </div>
-
-            <p class="section-description">
-                Selected projects demonstrating cloud data engineering,
-                migration, analytics and application development experience.
-            </p>
-
-
-            <div class="projects-grid">
-
-
-                <!-- PROJECT 1 -->
-
-                <article class="project-card featured-project">
-
-                    <div class="project-image">
-
-                        <img src="assets/databricks-project.jpg"
-                            alt="UHG 3RDD Optum Data Platform"
-                            loading="lazy">
-
-                        <div class="project-overlay">
-
-                            <span>
-                                <i class="fa-solid fa-cloud"></i>
-                                Azure Databricks
-                            </span>
-
-                            <span>
-                                <i class="fa-solid fa-database"></i>
-                                Data Platform
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <span class="project-category">
-                            DATA ENGINEERING
-                        </span>
-
-                        <h3>
-                            UHG 3RDD — Optum Data Platform
-                        </h3>
-
-                        <p>
-                            Enterprise healthcare data platform modernization
-                            focused on migrating legacy Informatica workflows
-                            to Azure Databricks and building reliable,
-                            production-ready data pipelines.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Azure Databricks</span>
-                            <span>PySpark</span>
-                            <span>SQL</span>
-                            <span>ADF</span>
-                            <span>ADLS Gen2</span>
-                            <span>Delta Lake</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 2 -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <img src="assets/cencora-databricks.jpg"
-                            alt="Cencora Enterprise Data Migration"
-                            loading="lazy">
-
-                        <div class="project-overlay">
-
-                            <span>
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                                Migration
-                            </span>
-
-                            <span>
-                                <i class="fa-solid fa-check-double"></i>
-                                Validation
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <span class="project-category">
-                            ENTERPRISE MIGRATION
-                        </span>
-
-                        <h3>
-                            Cencora Enterprise Data Migration
-                        </h3>
-
-                        <p>
-                            Enterprise migration project involving ingestion,
-                            transformation and validation of data on Azure
-                            Databricks with strong focus on data quality
-                            and pipeline testing.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Databricks</span>
-                            <span>PySpark</span>
-                            <span>ADF</span>
-                            <span>ADLS</span>
-                            <span>ICEDQ</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 3 -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <img src="assets/spotify-databricks.jpg"
-                            alt="Spotify Music Trends"
-                            loading="lazy">
-
-                        <div class="project-overlay">
-
-                            <span>
-                                <i class="fa-solid fa-chart-line"></i>
-                                Analytics
-                            </span>
-
-                            <span>
-                                <i class="fa-solid fa-music"></i>
-                                Spotify
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <span class="project-category">
-                            DATA ENGINEERING
-                        </span>
-
-                        <h3>
-                            Spotify Music Trends
-                        </h3>
-
-                        <p>
-                            Scalable music analytics pipeline built using
-                            Azure Data Factory, ADLS Gen2, Databricks,
-                            PySpark, Delta Lake and Medallion Architecture.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>ADF</span>
-                            <span>ADLS</span>
-                            <span>Databricks</span>
-                            <span>PySpark</span>
-                            <span>Delta Lake</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 4 JAVA -->
-
-                <article class="project-card">
-
-                    <div class="project-image project-placeholder">
-
-                        <div class="placeholder-icon">
-                            <i class="fa-brands fa-java"></i>
-                        </div>
-
-                        <div class="project-overlay">
-
-                            <span>
-                                <i class="fa-solid fa-layer-group"></i>
-                                Full Stack
-                            </span>
-
-                            <span>
-                                <i class="fa-solid fa-globe"></i>
-                                Web Application
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <span class="project-category">
-                            JAVA FULL STACK
-                        </span>
-
-                        <h3>
-                            Job Portal Web Application
-                        </h3>
-
-                        <p>
-                            Full-stack job portal application designed to
-                            connect job seekers and recruiters through
-                            a web-based platform with authentication,
-                            job management and application workflows.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Java</span>
-                            <span>JSP</span>
-                            <span>Spring Boot</span>
-                            <span>Hibernate</span>
-                            <span>MySQL</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 5 AI ML -->
-
-                <article class="project-card">
-
-                    <div class="project-image project-placeholder ml-project">
-
-                        <div class="placeholder-icon">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-
-                        <div class="project-overlay">
-
-                            <span>
-                                <i class="fa-solid fa-robot"></i>
-                                Machine Learning
-                            </span>
-
-                            <span>
-                                <i class="fa-solid fa-chart-simple"></i>
-                                Prediction
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <span class="project-category">
-                            AI / MACHINE LEARNING
-                        </span>
-
-                        <h3>
-                            Diabetes Prediction
-                        </h3>
-
-                        <p>
-                            Machine learning project focused on analyzing
-                            healthcare-related features and predicting
-                            diabetes risk using a structured data
-                            preprocessing and model-training workflow.
-                        </p>
-
-                        <div class="project-tech">
-
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>NumPy</span>
-                            <span>Machine Learning</span>
-                            <span>Data Analysis</span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CERTIFICATIONS ================= -->
-
-    <section id="certifications">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="section-number">05</span>
-
-                <div>
-                    <p class="section-label">CREDENTIALS</p>
-                    <h2>Certifications</h2>
-                </div>
-
-            </div>
-
-
-            <div class="certifications-grid">
-
-
-                <div class="cert-card featured-cert">
-
-                    <div class="cert-icon databricks">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="cert-provider">
-                            Databricks
-                        </span>
-
-                        <h3>
-                            Databricks Certified Data Engineer Professional
-                        </h3>
-
-                        <p>
-                            Professional-level certification in
-                            Databricks data engineering.
-                        </p>
-
-                    </div>
-
-                    <span class="cert-status">
-                        Certified
-                    </span>
-
-                </div>
-
-
-                <div class="cert-card">
-
-                    <div class="cert-icon databricks">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="cert-provider">
-                            Databricks
-                        </span>
-
-                        <h3>
-                            Databricks Certified Data Engineer Associate
-                        </h3>
-
-                        <p>
-                            Certification covering core Databricks
-                            data engineering concepts.
-                        </p>
-
-                    </div>
-
-                    <span class="cert-status">
-                        Certified
-                    </span>
-
-                </div>
-
-
-                <div class="cert-card">
-
-                    <div class="cert-icon microsoft">
-                        <i class="fa-brands fa-microsoft"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="cert-provider">
-                            Microsoft
-                        </span>
-
-                        <h3>
-                            Microsoft Certified: Azure AI Fundamentals
-                        </h3>
-
-                        <p>
-                            Azure AI and foundational artificial
-                            intelligence concepts.
-                        </p>
-
-                    </div>
-
-                    <span class="cert-status">
-                        Certified
-                    </span>
-
-                </div>
-
-
-                <div class="cert-card">
-
-                    <div class="cert-icon aws">
-                        <i class="fa-brands fa-aws"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="cert-provider">
-                            AWS
-                        </span>
-
-                        <h3>
-                            AWS Certified AI Practitioner
-                        </h3>
-
-                        <p>
-                            Foundational knowledge of AI and machine
-                            learning workloads on AWS.
-                        </p>
-
-                    </div>
-
-                    <span class="cert-status">
-                        Certified
-                    </span>
-
-                </div>
-
-
-                <!-- NEW GOOGLE CERTIFICATION -->
-
-                <div class="cert-card featured-cert">
-
-                    <div class="cert-icon google">
-                        <i class="fa-brands fa-google"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="cert-provider">
-                            Google Cloud
-                        </span>
-
-                        <h3>
-                            Google Cloud Generative AI Leader
-                        </h3>
-
-                        <p>
-                            Generative AI concepts, business applications
-                            and Google Cloud AI capabilities.
-                        </p>
-
-                    </div>
-
-                    <span class="cert-status">
-                        Certified
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= EDUCATION ================= -->
-
-    <section id="education">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="section-number">06</span>
-
-                <div>
-                    <p class="section-label">ACADEMICS</p>
-                    <h2>Education</h2>
-                </div>
-
-            </div>
-
-            <div class="education-card">
-
-                <div class="education-icon">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-
-                <div class="education-content">
-
-                    <span>
-                        2020 – 2024
-                    </span>
-
-                    <h3>
-                        Bachelor of Engineering — Computer Science
-                    </h3>
-
-                    <h4>
-                        Sathyabama Institute of Science and Technology
-                    </h4>
+                    <h2>
+                        Let's Connect
+                    </h2>
 
                     <p>
-                        Chennai, India
-                    </p>
-
-                </div>
-
-                <div class="cgpa">
-                    <strong>8.54</strong>
-                    <span>CGPA</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section id="contact">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="section-number">07</span>
-
-                <div>
-                    <p class="section-label">LET'S CONNECT</p>
-                    <h2>Get In Touch</h2>
-                </div>
-
-            </div>
-
-
-            <div class="contact-grid">
-
-
-                <div class="contact-info">
-
-                    <h3>
-                        Let's build something
-                        <span>data-driven.</span>
-                    </h3>
-
-                    <p>
-                        Interested in Data Engineering, Azure Databricks,
-                        cloud data platforms or enterprise data migration?
+                        Interested in Data Engineering,
+                        Azure Databricks or cloud data platforms?
                         Feel free to reach out.
                     </p>
 
 
-                    <div class="contact-links">
+                    <div class="contact-item">
 
-                        <a href="mailto:your-email@example.com">
+                        <i class="fa-solid fa-envelope"></i>
 
-                            <i class="fa-regular fa-envelope"></i>
+                        <span>
+                            abhishekniraj802@gmail.com
+                        </span>
 
-                            <div>
-                                <span>Email</span>
-                                <strong>
-                                    your-email@example.com
-                                </strong>
-                            </div>
+                    </div>
 
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <span>
+                            +91-7277236533
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-socials">
+
+                        <a
+                            href="https://github.com/abhishekniraj802"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fab fa-github"></i>
                         </a>
 
-
-                        <a href="https://www.linkedin.com/" target="_blank">
-
-                            <i class="fa-brands fa-linkedin-in"></i>
-
-                            <div>
-                                <span>LinkedIn</span>
-                                <strong>
-                                    Connect on LinkedIn
-                                </strong>
-                            </div>
-
-                        </a>
-
-
-                        <a href="https://github.com/" target="_blank">
-
-                            <i class="fa-brands fa-github"></i>
-
-                            <div>
-                                <span>GitHub</span>
-                                <strong>
-                                    View GitHub Profile
-                                </strong>
-                            </div>
-
+                        <a
+                            href="https://www.linkedin.com/in/abhishekniraj802/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fab fa-linkedin"></i>
                         </a>
 
                     </div>
 
                 </div>
 
-
-                <div class="contact-form-wrapper">
-
-                    <form id="contactForm">
-
-                        <div class="form-group">
-
-                            <label for="name">
-                                Your Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Enter your name"
-                                required>
-
-                        </div>
+            </div>
 
 
-                        <div class="form-group">
+            <div class="contact-right">
 
-                            <label for="email">
-                                Email Address
-                            </label>
+                <form id="contactForm">
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter your email"
-                                required>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your Name"
+                        required
+                    >
 
-                        </div>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Your Email"
+                        required
+                    >
 
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="6"
+                        placeholder="Your Message"
+                        required
+                    ></textarea>
 
-                        <div class="form-group">
+                    <button type="submit">
 
-                            <label for="message">
-                                Message
-                            </label>
+                        Send Message
 
-                            <textarea
-                                id="message"
-                                name="message"
-                                rows="6"
-                                placeholder="Write your message..."
-                                required></textarea>
+                        <i class="fa-solid fa-paper-plane"></i>
 
-                        </div>
+                    </button>
 
+                </form>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary">
-
-                            <i class="fa-regular fa-paper-plane"></i>
-                            Send Message
-
-                        </button>
-
-                        <p id="statusMessage"></p>
-
-                    </form>
-
-                </div>
+                <p
+                    id="statusMessage"
+                    class="status-message"
+                ></p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
-    <footer>
+<footer class="site-footer">
 
-        <div class="container">
+    <div class="footer-content">
 
-            <div class="footer-content">
+        <p>
+            © 2026 Abhishek Niraj
+        </p>
 
-                <div class="footer-logo">
-                    AN
-                </div>
+        <div>
 
-                <p>
-                    Data Engineer | Azure Databricks | PySpark | SQL
-                </p>
+            <a href="#home">
 
-                <div class="footer-socials">
+                Back to Top
 
-                    <a href="https://github.com/" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
+                <i class="fa-solid fa-arrow-up"></i>
 
-                    <a href="https://www.linkedin.com/" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="copyright">
-                © 2026 Abhishek Niraj. Built with passion for data engineering.
-            </div>
+            </a>
 
         </div>
 
-    </footer>
+    </div>
+
+</footer>
 
 
-    <!-- JavaScript -->
+<!-- =====================================================
+     SCROLL TO TOP BUTTON
+====================================================== -->
 
-    <script src="script.js"></script>
+<button
+    id="scrollToTopBtn"
+    class="scroll-to-top"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+<!-- =====================================================
+     LIBRARIES
+====================================================== -->
+
+<script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- Main JS -->
+
+<script src="./app.js"></script>
 
 </body>
-
 </html>
