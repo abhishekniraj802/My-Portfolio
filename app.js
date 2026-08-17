@@ -8,9 +8,6 @@
    DOM ELEMENTS
 ====================================================== */
 
-const sidemenu = document.getElementById("sidemenu");
-const menuToggle = document.getElementById("menuToggle");
-
 const scrollToTopBtn =
     document.getElementById("scrollToTopBtn");
 
@@ -22,6 +19,18 @@ const statusMessage =
 
 const contactSubmitBtn =
     document.getElementById("contactSubmitBtn");
+
+const mobileMenuToggle =
+    document.getElementById("mobileMenuToggle");
+
+const mobileMenuClose =
+    document.getElementById("mobileMenuClose");
+
+const mobileMenuOverlay =
+    document.getElementById("mobileMenuOverlay");
+
+const sidemenu =
+    document.getElementById("sidemenu");
 
 
 /* =====================================================
@@ -83,203 +92,122 @@ function opentab(tabName) {
 
 
 /* =====================================================
-   MOBILE MENU
+   MOBILE MENU (3-DOT / KEBAB TOGGLE)
+   Opens/closes the off-canvas nav panel. Guards every
+   DOM lookup so nothing breaks (and no blank screen)
+   if an element is ever missing.
 ====================================================== */
 
-function openmenu() {
+function openMobileMenu() {
 
     if (!sidemenu) {
         return;
     }
-
 
     sidemenu.classList.add("active");
 
-
-    document.body.classList.add("menu-open");
-
-
-    if (menuToggle) {
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "true"
-        );
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Close navigation menu"
-        );
-
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.classList.add("active");
     }
+
+    if (mobileMenuToggle) {
+        mobileMenuToggle.setAttribute("aria-expanded", "true");
+    }
+
+    document.body.style.overflow = "hidden";
 
 }
 
 
-/* =====================================================
-   CLOSE MOBILE MENU
-====================================================== */
-
-function closemenu() {
+function closeMobileMenu() {
 
     if (!sidemenu) {
         return;
     }
-
 
     sidemenu.classList.remove("active");
 
-
-    document.body.classList.remove("menu-open");
-
-
-    if (menuToggle) {
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open navigation menu"
-        );
-
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.classList.remove("active");
     }
+
+    if (mobileMenuToggle) {
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    document.body.style.overflow = "";
 
 }
 
 
-/* =====================================================
-   TOGGLE MOBILE MENU
-====================================================== */
+if (mobileMenuToggle && sidemenu) {
 
-function toggleMenu(event) {
-
-    if (event) {
-
-        event.preventDefault();
-
-        event.stopPropagation();
-
-    }
-
-
-    if (!sidemenu) {
-        return;
-    }
-
-
-    if (sidemenu.classList.contains("active")) {
-
-        closemenu();
-
-    } else {
-
-        openmenu();
-
-    }
-
-}
-
-
-/* =====================================================
-   MENU BUTTON
-====================================================== */
-
-if (menuToggle) {
-
-    menuToggle.addEventListener(
+    mobileMenuToggle.addEventListener(
         "click",
-        toggleMenu
+        function () {
+
+            if (sidemenu.classList.contains("active")) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
     );
 
 }
 
 
-/* =====================================================
-   NAVIGATION LINKS
-====================================================== */
+if (mobileMenuClose) {
 
-if (sidemenu) {
-
-    const menuLinks =
-        sidemenu.querySelectorAll("a");
-
-
-    menuLinks.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            function () {
-
-                closemenu();
-
-            }
-        );
-
-    });
+    mobileMenuClose.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
 }
 
 
-/* =====================================================
-   CLOSE MENU WHEN CLICKING OUTSIDE
-====================================================== */
+if (mobileMenuOverlay) {
 
-document.addEventListener(
-    "click",
-    function (event) {
+    mobileMenuOverlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
 
-        if (!sidemenu || !menuToggle) {
-            return;
-        }
+}
 
 
-        if (!sidemenu.classList.contains("active")) {
-            return;
-        }
+/* Close the panel automatically once any nav item
+   (Home / About / Skills / Projects / Certifications /
+   Resume / Contact) is clicked, so the user lands
+   directly on that section. */
+
+document
+    .querySelectorAll("#sidemenu a.nav-link")
+    .forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+    });
 
 
-        const clickedInsideMenu =
-            sidemenu.contains(event.target);
-
-        const clickedMenuButton =
-            menuToggle.contains(event.target);
-
-
-        if (
-            !clickedInsideMenu &&
-            !clickedMenuButton
-        ) {
-
-            closemenu();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   ESCAPE KEY
-====================================================== */
+/* Close on Escape key for accessibility */
 
 document.addEventListener(
     "keydown",
     function (event) {
 
-        if (event.key !== "Escape") {
-            return;
-        }
+        if (event.key === "Escape") {
 
-
-        if (
-            sidemenu &&
-            sidemenu.classList.contains("active")
-        ) {
-
-            closemenu();
+            closeMobileMenu();
 
         }
 
@@ -287,21 +215,16 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   CLOSE MENU ON DESKTOP
-====================================================== */
+/* Close automatically if the window is resized back
+   to desktop width while the panel is open */
 
 window.addEventListener(
     "resize",
     function () {
 
-        if (
-            window.innerWidth > 900 &&
-            sidemenu &&
-            sidemenu.classList.contains("active")
-        ) {
+        if (window.innerWidth > 900) {
 
-            closemenu();
+            closeMobileMenu();
 
         }
 
@@ -326,8 +249,8 @@ resumeButtons.forEach(function (button) {
         function () {
 
             /*
-             * Resume download/opening is
-             * handled directly by HTML.
+             * Resume opening is handled
+             * directly through HTML.
              */
 
         }
@@ -338,30 +261,57 @@ resumeButtons.forEach(function (button) {
 
 /* =====================================================
    SCROLL TO TOP
+   (rAF-throttled for smoother performance on scroll)
 ====================================================== */
 
-if (scrollToTopBtn) {
+let scrollTicking = false;
 
-    window.addEventListener(
-        "scroll",
-        function () {
 
-            if (window.scrollY > 300) {
+function handleScrollEffects() {
 
-                scrollToTopBtn.classList.add("show");
+    if (scrollToTopBtn) {
 
-            } else {
+        if (window.scrollY > 300) {
 
-                scrollToTopBtn.classList.remove("show");
+            scrollToTopBtn.classList.add("show");
 
-            }
+        } else {
 
-        },
-        {
-            passive: true
+            scrollToTopBtn.classList.remove("show");
+
         }
-    );
 
+    }
+
+
+    updateActiveNavigation();
+
+
+    scrollTicking = false;
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (!scrollTicking) {
+
+            window.requestAnimationFrame(handleScrollEffects);
+
+            scrollTicking = true;
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+if (scrollToTopBtn) {
 
     scrollToTopBtn.addEventListener(
         "click",
@@ -387,7 +337,7 @@ if (scrollToTopBtn) {
 
 const navLinks =
     document.querySelectorAll(
-        "#sidemenu a[href^='#']"
+        "nav ul a[href^='#']"
     );
 
 
@@ -445,20 +395,11 @@ function updateActiveNavigation() {
 }
 
 
-/* Initial state */
+/* =====================================================
+   INITIAL ACTIVE NAVIGATION
+====================================================== */
 
 updateActiveNavigation();
-
-
-/* Update while scrolling */
-
-window.addEventListener(
-    "scroll",
-    updateActiveNavigation,
-    {
-        passive: true
-    }
-);
 
 
 /* =====================================================
@@ -539,7 +480,7 @@ if (
 
 
 /* =====================================================
-   EMAILJS
+   EMAILJS INITIALIZATION
 ====================================================== */
 
 if (typeof emailjs !== "undefined") {
@@ -796,3 +737,97 @@ document
         );
 
     });
+
+
+/* =====================================================
+   INTERNAL NAVIGATION
+   Smooth scrolling with reliable section targeting.
+   Works for both the desktop nav and the mobile
+   off-canvas panel (menu-close is handled separately
+   above via the .nav-link listeners).
+====================================================== */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (!target) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+
+                /*
+                 * Keep browser URL synchronized
+                 * without jumping instantly.
+                 */
+
+                if (
+                    history.pushState
+                ) {
+
+                    history.pushState(
+                        null,
+                        "",
+                        targetId
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   PAGE LOAD SAFETY
+====================================================== */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        updateActiveNavigation();
+
+    }
+);
