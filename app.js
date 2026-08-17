@@ -1,470 +1,335 @@
-/* =====================================================
-   PORTFOLIO JAVASCRIPT
-   Abhishek Niraj - Data Engineer Portfolio
-====================================================== */
-
-
-/* =====================================================
-   TAB SWITCHING
-====================================================== */
-
-function opentab(tabName) {
-
-    const contents =
-        document.querySelectorAll(".tab-contents");
-
-    const tabs =
-        document.querySelectorAll(".tab-links");
-
-
-    /* Hide all tab contents */
-
-    contents.forEach((content) => {
-
-        content.classList.remove("active-tab");
-
-    });
-
-
-    /* Remove active state from all tabs */
-
-    tabs.forEach((tab) => {
-
-        tab.classList.remove("active-link");
-
-    });
-
-
-    /* Show selected tab */
-
-    const selectedContent =
-        document.getElementById(tabName);
-
-    if (selectedContent) {
-
-        selectedContent.classList.add("active-tab");
-
-    }
-
-
-    /* Activate selected tab */
-
-    tabs.forEach((tab) => {
-
-        const onclickValue =
-            tab.getAttribute("onclick");
-
-        if (
-            onclickValue &&
-            onclickValue.includes(`'${tabName}'`)
-        ) {
-
-            tab.classList.add("active-link");
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
+/* =========================================================
    MOBILE MENU
-====================================================== */
+========================================================= */
 
-const sidemenu =
-    document.getElementById("sidemenu");
-
+const sidemenu = document.getElementById("sidemenu");
 
 function openmenu() {
-
-    if (sidemenu) {
-
-        sidemenu.classList.add("active");
-
-    }
-
+    sidemenu.classList.add("open");
 }
-
 
 function closemenu() {
-
-    if (sidemenu) {
-
-        sidemenu.classList.remove("active");
-
-    }
-
+    sidemenu.classList.remove("open");
 }
 
 
-/* Close menu when navigation link is clicked */
+/* =========================================================
+   CLOSE MOBILE MENU AFTER NAVIGATION
+========================================================= */
 
-document
-    .querySelectorAll("#sidemenu a")
-    .forEach((link) => {
+document.querySelectorAll(".nav-link").forEach(link => {
 
-        link.addEventListener(
-            "click",
-            closemenu
-        );
+    link.addEventListener("click", () => {
+
+        closemenu();
 
     });
-
-
-/* =====================================================
-   RESUME
-====================================================== */
-
-const resumeButtons =
-    document.querySelectorAll(
-        "#resume-button-1, #resume-button-2"
-    );
-
-
-resumeButtons.forEach((button) => {
-
-    button.addEventListener(
-        "click",
-        function () {
-
-            /*
-             * Resume is handled directly by the
-             * download attribute in HTML.
-             *
-             * No Google Drive redirect required.
-             */
-
-        }
-    );
 
 });
 
 
-/* =====================================================
-   TYPED HERO TEXT
-====================================================== */
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
 
-if (
-    typeof Typed !== "undefined" &&
-    document.querySelector(".auto-type")
-) {
+const sections =
+    document.querySelectorAll("section[id]");
 
-    new Typed(
-        ".auto-type",
-        {
+const navLinks =
+    document.querySelectorAll(".nav-link");
 
-            strings: [
+window.addEventListener("scroll", () => {
 
-                "Data Engineer",
-                "Azure Databricks Engineer",
-                "PySpark & SQL Developer",
-                "Cloud Data Engineering Professional"
+    let current = "";
 
-            ],
+    sections.forEach(section => {
 
-            typeSpeed: 55,
+        const sectionTop =
+            section.offsetTop - 130;
 
-            backSpeed: 35,
+        if (window.scrollY >= sectionTop) {
 
-            backDelay: 1600,
-
-            loop: true
+            current =
+                section.getAttribute("id");
 
         }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href")
+            === `#${current}`
+        ) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   HERO TYPING ANIMATION
+========================================================= */
+
+const heroType =
+    document.getElementById("heroType");
+
+const heroText =
+    "Data Engineer specializing in Azure Databricks, PySpark & SQL";
+
+let typeIndex = 0;
+
+function typeHeroText() {
+
+    if (
+        typeIndex <= heroText.length
+    ) {
+
+        heroType.textContent =
+            heroText.substring(
+                0,
+                typeIndex
+            );
+
+        typeIndex++;
+
+        setTimeout(
+            typeHeroText,
+            38
+        );
+
+    }
+
+}
+
+window.addEventListener(
+    "load",
+    typeHeroText
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".glass-card, .project-card, .cert-card, .skill-category"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.classList.add(
+        "scroll-hidden"
+    );
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   RESUME
+========================================================= */
+
+const resumeUrl =
+    "https://drive.google.com/file/d/1jSyB3jhLuHW2nPoS-sqFdkkmDS4q_1UY/view?usp=sharing";
+
+
+function openResume(event) {
+
+    event.preventDefault();
+
+    window.open(
+        resumeUrl,
+        "_blank",
+        "noopener,noreferrer"
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    EMAILJS
-====================================================== */
-
-const contactForm =
-    document.getElementById("contactForm");
-
-
-const statusMessage =
-    document.getElementById("statusMessage");
-
-
-/*
- * Initialize EmailJS
- */
+========================================================= */
 
 if (
     typeof emailjs !== "undefined"
 ) {
 
     emailjs.init({
+
         publicKey:
             "QFXGomMr5FbDoybBR"
+
     });
 
-}
+
+    const contactForm =
+        document.getElementById(
+            "contactForm"
+        );
 
 
-/* =====================================================
-   SEND EMAIL
-====================================================== */
+    if (contactForm) {
 
-if (contactForm) {
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
 
-    contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
+                event.preventDefault();
 
 
-            const name =
-                document.getElementById("name").value.trim();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const message =
-                document.getElementById("message").value.trim();
+                const statusMessage =
+                    document.getElementById(
+                        "statusMessage"
+                    );
 
 
-            if (
-                !name ||
-                !email ||
-                !message
-            ) {
-
-                showStatus(
-                    "Please fill in all fields.",
-                    "error"
-                );
-
-                return;
-
-            }
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
 
 
-            showStatus(
-                "Sending message...",
-                "loading"
-            );
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
 
 
-            const templateParams = {
-
-                from_name: name,
-
-                from_email: email,
-
-                message: message
-
-            };
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
 
 
-            emailjs
-                .send(
-                    "service_qtbzwds",
-                    "template_p980pca",
-                    templateParams
-                )
+                if (
+                    !name ||
+                    !email ||
+                    !message
+                ) {
 
-                .then(
-                    function (response) {
+                    statusMessage.textContent =
+                        "Please fill in all fields.";
 
-                        console.log(
-                            "SUCCESS!",
-                            response.status,
-                            response.text
-                        );
+                    statusMessage.style.color =
+                        "#ff4d55";
+
+                    return;
+
+                }
 
 
-                        showStatus(
-                            "Message sent successfully!",
-                            "success"
-                        );
+                statusMessage.textContent =
+                    "Sending...";
 
+                statusMessage.style.color =
+                    "#aaaaaa";
+
+
+                const templateParams = {
+
+                    from_name:
+                        name,
+
+                    from_email:
+                        email,
+
+                    message:
+                        message
+
+                };
+
+
+                emailjs
+                    .send(
+                        "service_qtbzwds",
+                        "template_p980pca",
+                        templateParams
+                    )
+
+                    .then(() => {
+
+                        statusMessage.textContent =
+                            "Message sent successfully!";
+
+                        statusMessage.style.color =
+                            "#4ade80";
 
                         contactForm.reset();
 
-                    }
-                )
+                    })
 
-                .catch(
-                    function (error) {
+                    .catch(error => {
 
                         console.error(
-                            "EMAILJS ERROR:",
+                            "EmailJS error:",
                             error
                         );
 
+                        statusMessage.textContent =
+                            "Failed to send message. Please try again.";
 
-                        showStatus(
-                            "Failed to send message. Please try again.",
-                            "error"
-                        );
+                        statusMessage.style.color =
+                            "#ff4d55";
 
-                    }
-                );
+                    });
 
-        }
-    );
-
-}
-
-
-/* =====================================================
-   STATUS MESSAGE
-====================================================== */
-
-function showStatus(
-    message,
-    type
-) {
-
-    if (!statusMessage) {
-
-        return;
-
-    }
-
-
-    statusMessage.textContent =
-        message;
-
-
-    if (type === "success") {
-
-        statusMessage.style.color =
-            "#35d07f";
-
-    }
-
-    else if (type === "error") {
-
-        statusMessage.style.color =
-            "#ff4040";
-
-    }
-
-    else {
-
-        statusMessage.style.color =
-            "#aaa";
+            }
+        );
 
     }
 
 }
 
 
-/* =====================================================
-   ACTIVE NAVIGATION ON SCROLL
-====================================================== */
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
 
-const sections =
-    document.querySelectorAll(
-        "section[id], #home"
-    );
-
-
-const navLinks =
-    document.querySelectorAll(
-        "#sidemenu a"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        let currentSection = "";
-
-
-        sections.forEach(
-            function (section) {
-
-                const sectionTop =
-                    section.offsetTop - 150;
-
-                const sectionHeight =
-                    section.offsetHeight;
-
-                if (
-                    window.scrollY >= sectionTop &&
-                    window.scrollY <
-                        sectionTop + sectionHeight
-                ) {
-
-                    currentSection =
-                        section.getAttribute("id");
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            function (link) {
-
-                link.classList.remove(
-                    "active-nav"
-                );
-
-
-                const href =
-                    link.getAttribute("href");
-
-
-                if (
-                    href === `#${currentSection}`
-                ) {
-
-                    link.classList.add(
-                        "active-nav"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
-   IMAGE SAFETY
-====================================================== */
-
-/*
- * Local assets are used instead of API images.
- *
- * If an optional image is missing, hide only that
- * image instead of displaying a broken-image icon.
- */
-
-document
-    .querySelectorAll("img")
-    .forEach(
-        function (image) {
-
-            image.addEventListener(
-                "error",
-                function () {
-
-                    if (
-                        image.classList.contains(
-                            "project-image"
-                        )
-                    ) {
-
-                        image.style.background =
-                            "#151515";
-
-                    }
-
-                }
-            );
-
-        }
-    );
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
