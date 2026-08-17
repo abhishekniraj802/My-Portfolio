@@ -1,113 +1,444 @@
-// Tab Switching Functionality
-var tablinks = document.getElementsByClassName("tab-links");
-var tabcontents = document.getElementsByClassName("tab-contents");
+/* =========================================================
+   TAB SWITCHING
+========================================================= */
 
-function opentab(tabname, event) {
-    // Remove active class from all tabs and tab links
-    Array.from(tablinks).forEach(tablink => tablink.classList.remove("active-link"));
-    Array.from(tabcontents).forEach(tabcontent => tabcontent.classList.remove("active-tab"));
-
-    // Add active class to the clicked tab link and corresponding content
-    event.currentTarget.classList.add("active-link");
-    document.getElementById(tabname).classList.add("active-tab");
-}
+const tabLinks = document.querySelectorAll(".tab-links");
+const tabContents = document.querySelectorAll(".tab-contents");
 
 function opentab(tabName) {
+
+    // Remove active state from all tabs
+    tabLinks.forEach((tab) => {
+        tab.classList.remove("active-link");
+    });
+
     // Hide all tab contents
-    var contents = document.querySelectorAll('.tab-contents');
-    contents.forEach(function(content) {
-        content.classList.remove('active-tab');
+    tabContents.forEach((content) => {
+        content.classList.remove("active-tab");
     });
 
-    // Remove active-link from all tabs
-    var tabs = document.querySelectorAll('.tab-links');
-    tabs.forEach(function(tab) {
-        tab.classList.remove('active-link');
-    });
+    // Show selected content
+    const selectedContent =
+        document.getElementById(tabName);
 
-    // Show the selected tab's content and set the tab as active
-    document.getElementById(tabName).classList.add('active-tab');
-    var activeTab = document.querySelector(`[onclick="opentab('${tabName}')"]`);
-    activeTab.classList.add('active-link');
-}
+    if (selectedContent) {
+        selectedContent.classList.add("active-tab");
+    }
 
+    // Activate selected tab
+    const selectedTab =
+        document.querySelector(
+            `.tab-links[onclick="opentab('${tabName}')"]`
+        );
 
-// Sidebar Menu Functionality
-var sidemenu = document.getElementById("sidemenu");
-
-function openmenu() {
-    sidemenu.style.right = "0";
-}
-
-function closemenu() {
-    sidemenu.style.right = "-250px";
-}
-
-// Resume Button Click Event Handlers
-
-document.getElementById("resume-button-1").onclick = (event) => {
-    event.preventDefault(); // Prevent the default anchor behavior
-
-    // Open the direct download link for the resume
-    window.open("https://drive.google.com/file/d/1jSyB3jhLuHW2nPoS-sqFdkkmDS4q_1UY/view?usp=sharing", "_blank");
-};
-
-document.getElementById("resume-button-2").onclick = (event) => {
-    event.preventDefault(); // Prevent the default anchor behavior
-
-    // Open the direct download link for the resume
-    window.open("https://drive.google.com/file/d/1jSyB3jhLuHW2nPoS-sqFdkkmDS4q_1UY/view?usp=sharing", "_blank");
-};
-
-
-
-/*====== MESSAGE REQUEST ======*/
-
-// Initialize EmailJS with your API (Public Key)
-emailjs.init('QFXGomMr5FbDoybBR'); 
-
-// Function to send email
-function sendEmail(event) {
-    event.preventDefault(); // Prevent form from submitting normally
-
-    // Get form values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    // Status message element
-    const statusMessage = document.getElementById("statusMessage");
-
-    // Check if all fields are filled
-    if (name && email && message) {
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            message: message
-        };
-
-        // Use your Service ID, Template ID, and the provided template parameters
-        emailjs.send('service_qtbzwds', 'template_p980pca', templateParams)
-            .then(response => {
-                console.log('SUCCESS!', response.status, response.text);
-                statusMessage.textContent = "Message sent successfully!";
-                statusMessage.style.color = "green";
-                document.getElementById("contactForm").reset();
-            })
-            .catch(error => {
-                console.log('FAILED...', error);
-                statusMessage.textContent = "Failed to send message. Please try again.";
-                statusMessage.style.color = "red";
-            });
-    } else {
-        statusMessage.textContent = "Please fill in all fields.";
-        statusMessage.style.color = "red";
+    if (selectedTab) {
+        selectedTab.classList.add("active-link");
     }
 }
 
-// Attach the sendEmail function to form submission
-document.getElementById("contactForm").addEventListener("submit", sendEmail);
+
+/* =========================================================
+   SIDEBAR / MOBILE MENU
+========================================================= */
+
+const sideMenu =
+    document.getElementById("sidemenu");
+
+
+function openmenu() {
+
+    if (sideMenu) {
+        sideMenu.style.right = "0";
+    }
+
+}
+
+
+function closemenu() {
+
+    if (sideMenu) {
+        sideMenu.style.right = "-250px";
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICKING A NAV LINK
+========================================================= */
+
+const navigationLinks =
+    document.querySelectorAll("#sidemenu a");
+
+navigationLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+        if (window.innerWidth <= 768) {
+            closemenu();
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   RESUME
+========================================================= */
+
+const resumeURL =
+    "https://drive.google.com/file/d/1jSyB3jhLuHW2nPoS-sqFdkkmDS4q_1UY/view?usp=sharing";
+
+
+const resumeButton1 =
+    document.getElementById("resume-button-1");
+
+
+const resumeButton2 =
+    document.getElementById("resume-button-2");
+
+
+function openResume(event) {
+
+    event.preventDefault();
+
+    window.open(
+        resumeURL,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+if (resumeButton1) {
+
+    resumeButton1.addEventListener(
+        "click",
+        openResume
+    );
+
+}
+
+
+if (resumeButton2) {
+
+    resumeButton2.addEventListener(
+        "click",
+        openResume
+    );
+
+}
+
+
+/* =========================================================
+   EMAILJS CONTACT FORM
+========================================================= */
+
+if (typeof emailjs !== "undefined") {
+
+    emailjs.init({
+        publicKey: "QFXGomMr5FbDoybBR"
+    });
+
+}
+
+
+const contactForm =
+    document.getElementById("contactForm");
+
+
+const statusMessage =
+    document.getElementById("statusMessage");
+
+
+/* =========================================================
+   SEND EMAIL
+========================================================= */
+
+function sendEmail(event) {
+
+    event.preventDefault();
+
+
+    if (!contactForm) {
+        return;
+    }
+
+
+    const name =
+        document.getElementById("name").value.trim();
+
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    const message =
+        document.getElementById("message").value.trim();
 
 
 
+    /* ================= VALIDATION ================= */
 
+    if (!name || !email || !message) {
+
+        if (statusMessage) {
+
+            statusMessage.textContent =
+                "Please fill in all fields.";
+
+            statusMessage.style.color =
+                "#ff4d4d";
+
+        }
+
+        return;
+
+    }
+
+
+
+    /* ================= EMAIL VALIDATION ================= */
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (!emailPattern.test(email)) {
+
+        if (statusMessage) {
+
+            statusMessage.textContent =
+                "Please enter a valid email address.";
+
+            statusMessage.style.color =
+                "#ff4d4d";
+
+        }
+
+        return;
+
+    }
+
+
+
+    /* ================= LOADING STATE ================= */
+
+    if (statusMessage) {
+
+        statusMessage.textContent =
+            "Sending message...";
+
+        statusMessage.style.color =
+            "#aaaaaa";
+
+    }
+
+
+
+    /* ================= TEMPLATE PARAMETERS ================= */
+
+    const templateParams = {
+
+        from_name: name,
+
+        from_email: email,
+
+        message: message
+
+    };
+
+
+
+    /* ================= EMAILJS SEND ================= */
+
+    emailjs
+        .send(
+            "service_qtbzwds",
+            "template_p980pca",
+            templateParams
+        )
+
+        .then((response) => {
+
+            console.log(
+                "SUCCESS!",
+                response.status,
+                response.text
+            );
+
+
+            if (statusMessage) {
+
+                statusMessage.textContent =
+                    "Message sent successfully!";
+
+                statusMessage.style.color =
+                    "#00c853";
+
+            }
+
+
+            contactForm.reset();
+
+        })
+
+        .catch((error) => {
+
+            console.error(
+                "EMAILJS ERROR:",
+                error
+            );
+
+
+            if (statusMessage) {
+
+                statusMessage.textContent =
+                    "Failed to send message. Please try again.";
+
+                statusMessage.style.color =
+                    "#ff4d4d";
+
+            }
+
+        });
+
+}
+
+
+/* =========================================================
+   CONTACT FORM EVENT
+========================================================= */
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        sendEmail
+    );
+
+}
+
+
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach((anchor) => {
+
+    anchor.addEventListener(
+        "click",
+        function (event) {
+
+            const targetID =
+                this.getAttribute("href");
+
+
+            if (
+                !targetID ||
+                targetID === "#"
+            ) {
+                return;
+            }
+
+
+            const target =
+                document.querySelector(targetID);
+
+
+            if (!target) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   REMOTE IMAGE FALLBACK
+   Prevent broken images from looking ugly
+========================================================= */
+
+document
+    .querySelectorAll(".project-image")
+    .forEach((image) => {
+
+        image.addEventListener(
+            "error",
+            function () {
+
+                this.style.display =
+                    "none";
+
+                const wrapper =
+                    this.parentElement;
+
+                if (wrapper) {
+
+                    wrapper.classList.add(
+                        "image-fallback"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   LAZY IMAGE LOADING SUPPORT
+========================================================= */
+
+document
+    .querySelectorAll("img")
+    .forEach((image) => {
+
+        if (!image.hasAttribute("loading")) {
+
+            image.setAttribute(
+                "loading",
+                "lazy"
+            );
+
+        }
+
+    });
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+const currentYear =
+    new Date().getFullYear();
+
+
+const footerYear =
+    document.querySelector(
+        ".footer-year"
+    );
+
+
+if (footerYear) {
+
+    footerYear.textContent =
+        currentYear;
+
+}
